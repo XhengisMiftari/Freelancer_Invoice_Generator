@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_09_125742) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_09_143931) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_09_125742) do
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "project_id", null: false
+    t.index ["project_id"], name: "index_project_dates_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -50,9 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_09_125742) do
     t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "project_date_id", null: false
     t.index ["client_id"], name: "index_projects_on_client_id"
-    t.index ["project_date_id"], name: "index_projects_on_project_date_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -74,7 +74,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_09_125742) do
   end
 
   add_foreign_key "invoices", "projects"
+  add_foreign_key "project_dates", "projects"
   add_foreign_key "projects", "clients"
-  add_foreign_key "projects", "project_dates"
   add_foreign_key "projects", "users"
 end
