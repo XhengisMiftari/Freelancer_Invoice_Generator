@@ -1,0 +1,2 @@
+class ProjectDatesController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class ProjectDate < ApplicationRecord
+end
