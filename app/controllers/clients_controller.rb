@@ -1,12 +1,20 @@
 class ClientsController < ApplicationController
 
+  def index
+    @clients = Client.all
+  end
+
+  def show
+    @client = Client.find(params[:id])
+    @projects = @client.projects.order(created_at: :desc)
+  end
+
   def new
     @client = Client.new
   end
 
   def create
     @client = Client.new(client_params)
-    @client.user = current_user
 
     if @client.save
       redirect_to @client, notice: "Client has been created."
