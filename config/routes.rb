@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :projects, only: [:index, :create]
+  resources :project_dates
   # Defines the root path route ("/")
   # root "posts#index"
   resources :clients

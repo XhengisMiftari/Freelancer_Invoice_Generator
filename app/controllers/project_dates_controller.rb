@@ -3,6 +3,7 @@ class ProjectDatesController < ApplicationController
 
   def index
     @project_dates = ProjectDate.all
+    @project_date = ProjectDate.new
   end
 
   def show
