@@ -1,18 +1,37 @@
 <div style="display: flex;">
   <div style="flex: 2; margin-right: 2rem;">
     <h2>Projects</h2>
-    <ul>
-      <% @projects.each do |project| %>
-        <li>
-          <%= link_to "#{project.name}", project %>
-          - <%= project.status ? "Completed" : "Pending" %>
-          (Client: <%= project.client&.company_name %>)
-        </li>
-      <% end %>
-    </ul>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Client</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= link_to project.name, project %></td>
+            <td>
+              <span class="badge <%= project.status ? 'bg-success' : 'bg-warning' %>">
+                <%= project.status ? "Completed" : "Pending" %>
+              </span>
+            </td>
+            <td><%= project.client&.company_name %></td>
+            <td>
+              <%= link_to "Show", project_path(project), class: "btn btn-sm btn-primary" %>
+              <%= link_to "Edit", edit_project_path(project), class: "btn btn-sm btn-secondary" %>
+              <%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
   <div style="flex: 1;">
     <h2>New Project</h2>
-    <%= render "shared/projectsForm", project:@project %>
+    <%= render "shared/projectsForm", project: @project %>
   </div>
 </div>
