@@ -1,5 +1,29 @@
-<h1><%= @project.name %></h1>
-
-
-<%= link_to "Back", projects_path %>
-<%= link_to "Edit", edit_project_path(@project) %>
+<div class="container d-flex flex-column flex-lg-row justify-content-center align-items-start gap-4" style="min-height: 100vh;">  <div>
+    <div class="card h-100">
+      <div class="card-header text-center bg-primary text-white">
+        <h2><%= @project.name %></h2>
+        <small class="text-light">Details</small>
+      </div>
+      <div>
+        <ul class="list-group list-group-flush mb-3 text-start">
+          <li class="list-group-item"><strong>Project Name: </strong><%= @project.name %></li>
+          <li class="list-group-item"><strong>Client: </strong><%= @project.client&.company_name %></li>
+          <% if @project.project_date %>
+            <li class="list-group-item"><strong>Start Date: </strong><%= @project.project_date.start_date %></li>
+            <li class="list-group-item"><strong>End Date: </strong><%= @project.project_date.end_date %></li>
+          <% end %>
+          <li class="list-group-item"><strong>Price: </strong><%= @project.price %></li>
+          <li class="list-group-item">
+            <strong>Status: </strong>
+            <span class="badge <%= @project.status ? 'bg-success' : 'bg-warning' %>">
+              <%= @project.status ? 'Paid' : 'Not paid' %>
+            </span>
+          </li>
+        </ul>
+        <div>
+          <%= link_to "Back", projects_path %>
+          <%= link_to "Edit", edit_project_path(@project) %>
+        </div>
+      </div>
+    </div>
+  </div>
