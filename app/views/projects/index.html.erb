@@ -1,0 +1,17 @@
+<div style="display: flex;">
+  <div style="flex: 2; margin-right: 2rem;">
+    <h2>Projects</h2>
+    <ul>
+      <% @projects.each do |project| %>
+        <li>
+          <%= project.name %> - <%= project.status ? "Completed" : "Pending" %>
+          (Client: <%= project.client&.company_name %>)
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <h2>New Project</h2>
+    <%= render "shared/projectsForm", project:@project %>
+  </div>
+</div>

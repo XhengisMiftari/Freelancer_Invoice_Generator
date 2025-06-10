@@ -1,0 +1,18 @@
+<%= simple_form_for(invoice) do |f| %>
+  <%= f.input :tax %>
+  <%= f.input :description %>
+  <%= f.input :project_id, collection: Project.all.collect { |p| [p.name, p.id] }, prompt: "Select Project" %>
+  <%= f.button :submit %>
+<% end %>
+
+
+<%# def create
+  @invoice = Invoice.new(invoice_params)
+
+  if @invoice.save
+    redirect_to @invoice, notice: "Invoice was successfully created."
+  else
+    flash.now[:alert] = "There was a problem creating the invoice."
+    render :new, status: :unprocessable_entity
+  end
+end %>

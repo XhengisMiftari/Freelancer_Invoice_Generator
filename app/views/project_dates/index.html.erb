@@ -1,0 +1,18 @@
+<div style="display: flex;">
+  <div style="flex: 2; margin-right: 2rem;">
+    <h2>Project Dates</h2>
+    <ul>
+      <% @project_dates.each do |project_date| %>
+        <li>
+          <%= project_date.project&.name %>:
+          <%= project_date.start_date.strftime("%Y-%m-%d") %> to
+          <%= project_date.end_date.strftime("%Y-%m-%d") %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <h2>New Project Date</h2>
+    <%= render "shared/project_datesForm", project_date: @project_date %>
+  </div>
+</div>
