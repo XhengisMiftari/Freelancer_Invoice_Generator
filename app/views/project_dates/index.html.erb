@@ -1,7 +1,18 @@
-
+<!-- filepath: app/views/project_dates/index.html.erb -->
 <div style="display: flex;">
   <div style="flex: 2; margin-right: 2rem;">
     <h2>Project Dates</h2>
+    <div class="calendar-container">
+    <%= month_calendar(events: @project_dates, start_time: :start_date, end_time: :end_date) do |date, project_dates| %>
+  <%= date %>
+  <% project_dates.each_with_index do |project_date, idx| %>
+    <div class="calendar-event color-<%= idx %>">
+      <%= link_to project_date.project&.name, project_date_path(project_date) %><br>
+      <%= project_date.start_date.strftime("%Y-%m-%d") %> to <%= project_date.end_date.strftime("%Y-%m-%d") %>
+    </div>
+  <% end %>
+<% end %>
+</div>
     <ul>
       <% @project_dates.each do |project_date| %>
         <li>

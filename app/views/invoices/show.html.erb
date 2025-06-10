@@ -1,3 +1,14 @@
+<h2>Invoice Details</h2>
+
+<p>
+  <strong>Tax amount</strong>
+  <%= @invoice.tax %>
+</p>
+<p>
+  <strong>Description</strong>
+  <%= @invoice.description %>
+</p>
+
 <%= link_to "Delete",
   invoice_path(@invoice),
   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}

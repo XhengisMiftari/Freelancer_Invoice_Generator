@@ -1,13 +1,17 @@
 class InvoicesController < ApplicationController
+
   def index
     @invoices = Invoice.all
     @invoice = Invoice.new
-
   end
 
   def show
     @invoice = Invoice.find(params[:id])
     @project = @invoice.project
+  end
+
+  def new
+    @invoices = Invoice.new
   end
 
   def destroy

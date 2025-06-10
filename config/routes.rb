@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :project_dates
   resources :clients
+  resources :invoices, only: [:index, :new, :show, :create, :destroy]
   # Defines the root path route ("/")
   # root "posts#index"
   get "index", to: "invoices#index"
