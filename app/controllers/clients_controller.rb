@@ -33,7 +33,13 @@ class ClientsController < ApplicationController
   end
 
   def edit
-      @client = Client.find(params[:id])
+    @client = Client.find(params[:id])
+  end
+
+  def destroy
+    @client = Client.find(params[:id])
+    @client.destroy
+    redirect_to clients_path, notice: "Client has been removed."
   end
 
   private

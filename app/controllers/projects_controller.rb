@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+
   def index
   @projects = current_user.projects
   @project = Project.new
@@ -34,7 +35,7 @@ class ProjectsController < ApplicationController
 
   private
 
- def project_params
+def project_params
     params.require(:project).permit(:name, :price, :status, :client_id)
   end
 end
