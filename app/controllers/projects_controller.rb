@@ -1,8 +1,13 @@
 class ProjectsController < ApplicationController
 
   def index
-  @projects = current_user.projects
-  @project = Project.new
+    @projects = current_user.projects
+    @project = Project.new
+    @projects = Project.all.includes(:client)
+  end
+
+  def show
+  @project = Project.find(params[:id])
   end
 
   def create
@@ -14,6 +19,12 @@ class ProjectsController < ApplicationController
     else
       render :index
     end
+  end
+
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to projects_path, notice: "project has been removed."
   end
 
   private

@@ -3,5 +3,5 @@
 <p>E-Mail: <%= @client.email %></p>
 <p>Telefon: <%= @client.phone_number %></p>
 
-<%= link_to "Remove Client", client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" %>
+<%= link_to "Remove Client", client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-warning" %>
 <%= link_to "Back", clients_path %>
