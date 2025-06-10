@@ -21,9 +21,11 @@
           </li>
         </ul>
         <div>
+          <%= link_to "Remove Project", project_path(@project), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-warning" %>
           <%= link_to "Back", projects_path %>
           <%= link_to "Edit", edit_project_path(@project) %>
         </div>
       </div>
     </div>
   </div>
+<h1><%= @project.name %></h1>
