@@ -1,0 +1,9 @@
+<h1><%= @project.name %></h1>
+
+<p>Price: <%= @project.price %></p>
+<p>Status: <%= @project.status %></p>
+<p>Name: <%= @project.client.first_name %><%= @project.client.last_name %></p>
+
+<%= link_to "Remove Project", project_path(@project), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-warning" %>
+<%= link_to "Back", projects_path %>
+<%= link_to "Edit", edit_project_path(@project) %>

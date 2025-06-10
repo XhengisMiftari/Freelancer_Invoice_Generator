@@ -4,7 +4,8 @@
     <ul>
       <% @projects.each do |project| %>
         <li>
-          <%= project.name %> - <%= project.status ? "Completed" : "Pending" %>
+          <%= link_to "#{project.name}", project %>
+          - <%= project.status ? "Completed" : "Pending" %>
           (Client: <%= project.client&.company_name %>)
         </li>
       <% end %>
