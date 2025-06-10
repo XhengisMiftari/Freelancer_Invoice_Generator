@@ -1,5 +1,26 @@
+<div style="display: flex;">
+  <div style="flex: 2; margin-right: 2rem;">
+    <h2>Invoices</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Issue Date</th>
+          <th>Due Date</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @invoices.each do |invoice| %>
+          <tr>
+            <td><%= link_to "#{invoice.project.name}", invoice %></td>
+            <td><%= link_to "#{invoice.created_at}", invoice %></td>
+          </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
 <h1> hello this is index </h1>
-
 
 <%= render "shared/invoicesForm", invoice: @invoice %>
 <a data-turbo-method="delete" data-turbo-confirm="Are you sure?" href="/restaurants/6">
