@@ -1,0 +1,6 @@
+<%= simple_form_for(project_date) do |f| %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.input :project_id, collection: Project.all.collect { |p| [p.name, p.id] }, prompt: "Select Project" %>
+  <%= f.button :submit %>
+<% end %>
