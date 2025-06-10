@@ -23,7 +23,7 @@ users = 5.times.map do |i|
     last_name: "Last#{i}",
     date_of_birth: Date.new(1990, 1, i+1),
     address: "#{i+1} Main St",
-    phone_number: "123456789#{i}" # <-- as string
+    phone_number: "123456789#{i}"
   )
 end
 
@@ -34,7 +34,7 @@ clients = 5.times.map do |i|
     last_name: "Surname#{i}",
     date_of_birth: Date.new(1985, 5, i+1),
     address: "#{i+10} Client Ave",
-    phone_number: "98765432#{100 + i}", # <-- as string and shorter
+    phone_number: "98765432#{100 + i}",
     company_name: "Company#{i}",
     email: "client#{i}@company.com"
   )
