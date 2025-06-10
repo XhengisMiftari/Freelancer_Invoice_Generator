@@ -1,8 +1,7 @@
 class ProjectsController < ApplicationController
   def index
-   # @projects = current_user.projects.includes(:client)
-    @projects = Project.all
-    @project = Project.new
+  @projects = current_user.projects
+  @project = Project.new
   end
 
   def create
@@ -19,6 +18,6 @@ class ProjectsController < ApplicationController
   private
 
  def project_params
-    params.require(:project).permit(:name, :price, :status, :client)
+    params.require(:project).permit(:name, :price, :status, :client_id)
   end
 end
