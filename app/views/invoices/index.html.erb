@@ -1,0 +1,6 @@
+<h1> hello this is index </h1>
+<ul>
+  <% @invoices.each do |invoice| %>
+    <li><%= invoice.project.name %></li>
+  <% end %>
+</ul>
