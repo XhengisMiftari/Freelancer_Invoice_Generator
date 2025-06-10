@@ -5,14 +5,17 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new
   end
 
+
   def show
     @invoice = Invoice.find(params[:id])
+    @project = @invoice.project
   end
 
   def new
     @invoices = Invoice.new
   end
 
+  
   def destroy
     @invoice = Invoice.find(params[:id])
     @invoice.destroy
