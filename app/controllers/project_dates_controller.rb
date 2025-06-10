@@ -2,7 +2,7 @@ class ProjectDatesController < ApplicationController
   before_action :set_project_date, only: [:show, :edit, :update, :destroy]
 
   def index
-    @project_dates = ProjectDate.all
+    @project_dates = ProjectDate.joins(:project).where(projects: { user_id: current_user.id })
     @project_date = ProjectDate.new
   end
 
