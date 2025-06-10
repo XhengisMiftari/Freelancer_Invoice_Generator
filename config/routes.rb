@@ -14,10 +14,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   get "index", to: "invoices#index"
-<<<<<<< HEAD
   resources :clients
   resources :invoices
-=======
   get "invoices/new", to: "invoicess#new"
->>>>>>> master
 end

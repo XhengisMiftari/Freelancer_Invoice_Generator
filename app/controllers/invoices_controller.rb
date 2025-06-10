@@ -7,6 +7,7 @@ class InvoicesController < ApplicationController
 
   def show
     @invoice = Invoice.find(params[:id])
+    @project = @invoice.project
   end
 
   def destroy
