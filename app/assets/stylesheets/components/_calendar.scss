@@ -6,16 +6,21 @@
     background-color: #FAF3DD;
   }
 }
+.calendar-event.color-0 { background: #ffe066; color: #222; }
+.calendar-event.color-1 { background: #b5ead7; color: #222; }
+.calendar-event.color-2 { background: #ffb7b2; color: #222; }
+.calendar-event.color-3 { background: #b2cefe; color: #222; }
+.calendar-event.color-4 { background: #d4a5a5; color: #222; }
 
 .calendar-event {
-  background: #f9d342;
+  background: #30b7ec;
   color: #222;
   border-radius: 6px;
   padding: 6px 10px;
   margin-bottom: 4px;
   font-weight: bold;
   box-shadow: 0 2px 6px rgba(0,0,0,0.07);
-  border: 1px solid #f1c40f;
+  border: 1px solid #f1c40f65;
 }
 
 .meeting {
