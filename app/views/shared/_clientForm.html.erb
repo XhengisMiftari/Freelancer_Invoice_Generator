@@ -1,0 +1,14 @@
+<%= simple_form_for(client) do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :date_of_birth %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+  <%= f.input :company_name %>
+  <%= f.input :email %>
+  <%= f.button :submit %>
+<% end %>
+
+  <%# <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 12, discard_day: true,
+                              order: [:month, :year] %>

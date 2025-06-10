@@ -1,0 +1,8 @@
+<%= simple_form_for(project) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :price %>
+  <%= f.input :status, as: :boolean %>
+  <%= f.input :user_id, collection: User.all, prompt: "Select User" %>
+  <%= f.input :client_id, collection: Client.all, prompt: "Select Client" %>
+  <%= f.button :submit %>
+<% end %>
