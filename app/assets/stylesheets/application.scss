@@ -10,3 +10,15 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.rounded-circle {
+  border-radius: 50%;
+  object-fit: cover;
+}
+a {
+  text-decoration: none
+}
+
+.bg-primary {
+  background-color: rgb(102, 168, 146) !important;
+}
