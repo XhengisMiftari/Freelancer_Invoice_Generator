@@ -30,11 +30,10 @@ class ProjectDatesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-     if @project_date.update(project_date_params)
+    if @project_date.update(project_date_params)
       redirect_to @project_date, notice: "Project date was successfully updated."
 
     else
