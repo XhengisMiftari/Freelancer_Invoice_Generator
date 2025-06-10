@@ -3,7 +3,7 @@
 <ul>
   <% @clients.each do |client| %>
     <li>
-      <%= client.first_name %> <%= client.last_name %>
+      <%= link_to "#{client.first_name} #{client.last_name}", client %>
       <%= link_to "Edit", edit_client_path(client) %>
     </li>
   <% end %>
