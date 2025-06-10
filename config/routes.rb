@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   resources :projects
   resources :project_dates
+  resources :clients
   # Defines the root path route ("/")
   # root "posts#index"
   get "index", to: "invoices#index"
-  resources :clients
   get "invoices/new", to: "invoicess#new"
 end
