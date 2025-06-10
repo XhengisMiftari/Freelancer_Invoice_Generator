@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "index", to: "invoices#index"
   resources :clients
-  get "invoices/new", to: "invoicess#new"
+  resources :invoices
 end
