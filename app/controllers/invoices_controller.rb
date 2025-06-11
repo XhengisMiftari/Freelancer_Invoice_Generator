@@ -47,10 +47,20 @@ class InvoicesController < ApplicationController
   end
 
   def create
-  @invoice = Invoice.new(invoice_params)
+   @invoice = Invoice.new(invoice_params)
   if @invoice.save
-    # Send the invoice via mail (implement your mailer)
-    InvoiceMailer.with(invoice: @invoice).send_invoice.deliver_later
+    client = @invoice.project.client
+    invoice_html = render_to_string(
+    template: 'invoices/show',
+    layout: 'pdf', locals: { invoice: @invoice }
+  )
+    GmailSender.send_gmail(
+      current_user,
+      client.email,
+      "Your Invoice from #{@invoice.project.name}",
+      "Here is your invoice for project #{@invoice.project.name}.",
+      invoice_html
+    )
     flash[:notice] = "Invoice created and sent!"
     redirect_to invoice_path(@invoice)
   else
