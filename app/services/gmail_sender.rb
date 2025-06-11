@@ -15,7 +15,7 @@ class GmailSender
     )
     raise ArgumentError, "Recipient email address is missing" if to.blank?
     message = Mail.new(
-      to: email,
+      to: to.email,
       from: user.email,
       subject: subject,
       body: body
