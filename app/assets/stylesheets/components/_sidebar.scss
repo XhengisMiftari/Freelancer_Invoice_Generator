@@ -43,7 +43,7 @@ body {
 #sidebar header {
   background-color: #263238;
   font-size: 20px;
-  line-height: 52px;
+  line-height: 75px;
   text-align: center;
 }
 
@@ -60,13 +60,13 @@ body {
 #sidebar .nav a{
   background: none;
   color: #CFD8DC;
-  font-size: 14px;
+  font-size: 20px;
   padding: 16px 24px;
 }
 
-#sidebar .nav a:hover{
-  background: none;
-  color: #ECEFF1;
+.nav-link:hover{
+  background: #dbdceef3 !important;
+  color: #131427ee !important;
 }
 
 #sidebar .nav a i{
@@ -80,10 +80,22 @@ body {
 }
 
 .navbar-brand img {
-  width: 40px;
+  width: 60px;
 }
 
 .dropdown-menu{
   background-color: #7F8CAA;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+.avatar, .avatar.rounded-circle {
+  width: 56px;   // or your preferred size
+  height: 56px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 12px auto;
+}
