@@ -6,32 +6,66 @@
     background-color: #FAF3DD;
   }
 }
-.calendar-event.color-0 { background: #ffe066; color: #222; }
-.calendar-event.color-1 { background: #b5ead7; color: #222; }
-.calendar-event.color-2 { background: #ffb7b2; color: #222; }
-.calendar-event.color-3 { background: #b2cefe; color: #222; }
-.calendar-event.color-4 { background: #d4a5a5; color: #222; }
+
+// Bright color variations for events
+.calendar-event.color-0 { background: #ffe066; color: #222; border-left: 5px solid #ffd700; }
+.calendar-event.color-1 { background: #b5ead7; color: #222; border-left: 5px solid #00b894; }
+.calendar-event.color-2 { background: #ffb7b2; color: #222; border-left: 5px solid #ff7675; }
+.calendar-event.color-3 { background: #b2cefe; color: #222; border-left: 5px solid #0984e3; }
+.calendar-event.color-4 { background: #fd79a8; color: #222; border-left: 5px solid #fd79a8; }
 
 .calendar-event {
-  background: #30b7ec;
-  color: #222;
-  border-radius: 6px;
-  padding: 6px 10px;
-  margin-bottom: 4px;
-  font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   border: 1px solid #f1c40f65;
+  transition: background 0.2s, box-shadow 0.2s;
+  &:hover {
+    background: #fffbe6;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  a {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+    &:hover {
+      color: #007bff;
+      text-decoration: underline;
+    }
+  }
+  small {
+    color: #666;
+    font-size: 0.9em;
+  }
 }
 
-.meeting {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  background: #1EDD88;
-  transition: background 0.3s ease;
-}
-
-.meeting:hover {
-  background: #1BCB7F;
-  color: white;
+// Year calendar card styling
+.year-calendar .month-block .card {
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border: none;
+  background: #f8f9fa;
+  transition: transform 0.1s;
+  &:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .card-header {
+    background: linear-gradient(90deg, #ffe066 0%, #b5ead7 100%);
+    color: #222;
+    font-size: 1.2rem;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    padding: 0.75rem 1rem;
+    letter-spacing: 1px;
+  }
+  .card-body {
+    padding: 1rem;
+    min-height: 120px;
+    background: #fffbe6;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
 }
