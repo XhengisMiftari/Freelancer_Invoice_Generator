@@ -18,9 +18,9 @@
 <ul>
     <li><%= @invoice.tax%></li>
     <li><%= @invoice.description%></li>
-    <li class="list-group-item"><strong>Project Name: </strong><%= @project.name %></li>
-    <li class="list-group-item"><strong>Client: </strong><%= @project.client&.company_name %></li>
-    <li class="list-group-item"><strong>Price: </strong><%= @project.price %></li>
-    <li class="list-group-item"><strong>Start Date: </strong><%= @project.project_date.start_date %></li>
-    <li class="list-group-item"><strong>End Date: </strong><%= @project.project_date.end_date %></li>
+    <li class="list-group-item"><strong>Project Name: </strong><%= @invoice.project.name %></li>
+    <li class="list-group-item"><strong>Client: </strong><%= @invoice.project.client&.company_name %></li>
+    <li class="list-group-item"><strong>Price: </strong><%= @invoice.project.price %></li>
+    <li class="list-group-item"><strong>Start Date: </strong><%=@invoice.project.project_date.start_date %></li>
+    <li class="list-group-item"><strong>End Date: </strong><%= @invoice.project.project_date.end_date %></li>
 </ul>
