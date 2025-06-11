@@ -1,0 +1,8 @@
+<h1>Invoice #<%= @invoice.id %></h1>
+<p>Dear <%= @project.client.company_name %>,</p>
+<p>Here is your invoice for the project <strong><%= @project.name %></strong>.</p>
+<p>Description: <%= @invoice.description %></p>
+<p>Tax: <%= @invoice.tax %></p>
+<p>Price: <%= number_to_currency(@project.price) %></p>
+<p>Start Date: <%= @project.project_date.start_date %></p>
+<p>End Date: <%= @project.project_date.end_date %></p>

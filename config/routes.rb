@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: "pages#home"
 
   resources :projects
@@ -9,9 +9,6 @@ Rails.application.routes.draw do
   resources :invoices do
     collection do
       get :preview
-
     end
   end
-
-
 end
