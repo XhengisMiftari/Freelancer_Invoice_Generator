@@ -2,7 +2,7 @@
   <%= link_to "#", class: "navbar-brand" do %>
     <%= image_tag "logo3.png" %>
   <% end %>
-  <button id="toggle-navbar" class="btn btn-sm btn-light">☰ Menu</button>
+  <button class="toggle-navbar" class="btn btn-sm btn-light">☰ Menu</button>
   <ul class="navbar-nav flex-column mt-4">
     <% if user_signed_in? %>
         <li class="nav-item dropdown mt-auto">
