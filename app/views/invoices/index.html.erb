@@ -5,24 +5,29 @@
       <thead>
         <tr>
           <th>Full Name</th>
-          <th>Issue Date</th>
-          <th>Due Date</th>
+          <th>Start Date</th>
+          <th>End Date</th>
           <th>Status</th>
+          <th>Invoice</th>
         </tr>
-        </thead>
-        <tbody>
-          <% @invoices.each do |invoice| %>
-          <tr>
-            <td><%= link_to "#{invoice.project.name}", invoice %></td>
-            <td><%= link_to "#{invoice.created_at}", invoice %></td>
-          </tr>
-          <% end %>
-      </table>
-    </div>
+      </thead>
+      <tbody>
+      <% @invoices.each do |invoice| %>
+        <tr>
+          <td><%= link_to invoice.project.name, invoice_path(invoice) %></td>
+          <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+          <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+          <td><%= invoice.project.status ? "Active" : "Inactive" %></td>
+          <td>
+            <%= link_to invoice_path(invoice) do %>
+              <%= image_tag("invoice.png", alt: "Invoice", width: 32, height: 32) %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
-<h1> hello this is index </h1>
+</div>
 
 <%= render "shared/invoicesForm", invoice: @invoice %>
-<a data-turbo-method="delete" data-turbo-confirm="Are you sure?" href="/restaurants/6">
-  Delete
-</a>
