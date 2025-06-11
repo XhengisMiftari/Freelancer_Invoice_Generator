@@ -2,13 +2,23 @@ class ProjectDatesController < ApplicationController
   before_action :set_project_date, only: [:show, :edit, :update, :destroy]
 
   def index
-    start_date = params.fetch(:start_date, Date.today).to_date
+  year = params[:year]&.to_i || Date.today.year
+  start_date = params.fetch(:start_date, Date.today).to_date
+
+  if params[:view] == "year"
+    @calendar_year = year
+    @project_dates = ProjectDate
+      .joins(:project)
+      .where(projects: { user_id: current_user.id })
+      .where(start_date: Date.new(year, 1, 1)..Date.new(year, 12, 31))
+  else
     @project_dates = ProjectDate
       .joins(:project)
       .where(projects: { user_id: current_user.id })
       .where(start_date: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
-    @project_date = ProjectDate.new
   end
+  @project_date = ProjectDate.new
+end
 
   def show
 
