@@ -66,7 +66,7 @@ body {
 
 .nav-link:hover{
   background: #dbdceef3 !important;
-  color: #333446ee;
+  color: #131427ee !important;
 }
 
 #sidebar .nav a i{
@@ -89,4 +89,13 @@ body {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.avatar, .avatar.rounded-circle {
+  width: 56px;   // or your preferred size
+  height: 56px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 12px auto;
 }

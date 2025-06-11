@@ -56,7 +56,7 @@ class InvoicesController < ApplicationController
   )
     GmailSender.send_gmail(
       current_user,
-      client.email,
+      client,
       "Your Invoice from #{@invoice.project.name}",
       "Here is your invoice for project #{@invoice.project.name}.",
       invoice_html
