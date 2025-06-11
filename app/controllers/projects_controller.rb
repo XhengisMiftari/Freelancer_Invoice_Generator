@@ -11,13 +11,18 @@ class ProjectsController < ApplicationController
   def show
   end
 
+  def list
+    @projects = Project.order(created_at: :desc).includes(:client)
+    render partial: "projects/list_frame", locals: { projects: @projects}, layout: false
+  end
+
   def create
     @project = Project.new(project_params)
     @project.user = current_user
     if @project.save
-      redirect_to projects_path, notice: 'Project was created.'
+      render partial: "projects/new_project_frame", locals: { project: Project.new }, layout: false, status: :created
     else
-      render :index
+      render partial: "projects/new_project_frame", locals: { project: @project }, layout: false, status: :unprocessable_entity
     end
   end
 
