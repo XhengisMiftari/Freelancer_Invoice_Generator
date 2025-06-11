@@ -2,7 +2,7 @@
   <%= f.input :tax %>
   <%= f.input :description %>
   <%= f.input :project_id, collection: Project.all.collect { |p| [p.name, p.id] }, prompt: "Select Project" %>
-  <%= f.button :submit %>
+  <%= f.submit "Create & Send Invoice", class: "btn btn-success" %>
 <% end %>
 
 

@@ -5,6 +5,21 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new
   end
 
+  def preview
+    # Example: render the latest invoice as a PDF preview
+    @invoice = Invoice.last
+    @project = @invoice.project
+
+    respond_to do |format|
+      format.html { render :show }
+      format.pdf do
+        render pdf: "invoice_preview",
+               template: "invoices/show",
+               layout: 'pdf'
+      end
+    end
+  end
+
 
   def show
     @invoice = Invoice.find(params[:id])
@@ -32,11 +47,17 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
-    if @invoice.save
+  @invoice = Invoice.new(invoice_params)
+  if @invoice.save
+    # Send the invoice via mail (implement your mailer)
+    InvoiceMailer.with(invoice: @invoice).send_invoice.deliver_later
+    flash[:notice] = "Invoice created and sent!"
     redirect_to invoice_path(@invoice)
-    end
+  else
+    flash.now[:alert] = "There was a problem creating the invoice."
+    render :new, status: :unprocessable_entity
   end
+end
 
   private
 
