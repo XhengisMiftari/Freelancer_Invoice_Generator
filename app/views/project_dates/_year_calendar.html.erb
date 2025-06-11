@@ -1,5 +1,3 @@
-<!-- filepath: app/views/project_dates/_year_calendar.html.erb -->
-<%# Year navigation setup %>
 <% current_year = defined?(calendar_year) ? calendar_year : (defined?(@calendar_year) ? @calendar_year : Date.today.year) %>
 <% prev_year = current_year - 1 %>
 <% next_year = current_year + 1 %>
@@ -24,6 +22,9 @@
               <% monthly_events.each_with_index do |project_date, idx| %>
                 <div class="calendar-event color-<%= idx % 5 %> mb-2">
                   <%= link_to project_date.project&.name, project_date_path(project_date) %><br>
+                  <% if project_date.project&.price.present? %>
+                    <span class="text-success"><%= number_to_currency(project_date.project.price) %></span><br>
+                  <% end %>
                   <small>
                     <%= project_date.start_date.strftime("%Y-%m-%d") %>
                     <% if project_date.end_date && project_date.end_date != project_date.start_date %>
