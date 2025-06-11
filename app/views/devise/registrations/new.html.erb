@@ -21,5 +21,7 @@
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
+<%= link_to "Sign up with Google", user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger", style: "margin-top: 1rem;" %>
+<%= button_to 'Login with Google', user_google_oauth2_omniauth_callback_path, method: :get, :data => {turbo: "false"} %>
 
 <%= render "devise/shared/links" %>

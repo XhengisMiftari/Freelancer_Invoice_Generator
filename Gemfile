@@ -36,6 +36,13 @@ gem "simple_calendar", "~> 2.4"
 # devise
 gem "devise"
 
+
+gem 'omniauth-google-oauth2'
+gem 'google-apis-gmail_v1'
+
+
+gem 'dotenv-rails', groups: [:development, :test]
+
 #pdf generator
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
