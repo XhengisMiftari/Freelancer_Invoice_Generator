@@ -1,19 +1,7 @@
-<%= simple_form_for(project) do |f| %>
+<%= simple_form_for(project, html: { data: { controller: "project-form", turbo_frame: "new_project_form" } }) do |f| %>
   <%= f.input :name %>
   <%= f.input :price %>
   <%= f.input :status, as: :select, collection: [["Paid", true], ["Not Paid", false]], prompt: "Select Status" %>
-  <%= f.input :client_id, collection: Client.all.collect { |c| [c.first_name + " " + c.last_name, c.id] }, prompt: "Select Client" %>
+  <%= f.input :client_id, collection: Client.all.map { |c| ["#{c.first_name} #{c.last_name}", c.id] }, prompt: "Select Client" %>
   <%= f.button :submit %>
 <% end %>
-
-<%# def create
-  @project = Project.new(project_params)
-  @project.user = current_user
-
-  if @project.save
-    redirect_to @project, notice: "Project was successfully created."
-  else
-    flash.now[:alert] = "There was a problem creating the project."
-    render :new, status: :unprocessable_entity
-  end
-end %>
