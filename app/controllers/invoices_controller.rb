@@ -9,13 +9,22 @@ class InvoicesController < ApplicationController
   def show
     @invoice = Invoice.find(params[:id])
     @project = @invoice.project
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "invoice_#{@invoice.id}",
+              template: "invoices/show",
+              layout: 'pdf'
+      end
+    end
   end
 
   def new
     @invoices = Invoice.new
   end
 
-  
+
   def destroy
     @invoice = Invoice.find(params[:id])
     @invoice.destroy
