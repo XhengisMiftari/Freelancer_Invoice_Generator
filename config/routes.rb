@@ -2,10 +2,17 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: "pages#home"
 
-  get "projects/list", to: "projects#list", as: :list_projects
-  resources :projects
+  resources :projects do
+    collection do
+      get :list
+    end
+  end
   resources :project_dates
-  resources :clients
+  resources :clients do
+    collection do
+      get :list
+    end
+  end
   resources :invoices do
     collection do
       get :preview
