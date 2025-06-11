@@ -2,11 +2,10 @@ class ProjectsController < ApplicationController
 
   before_action :set_project, only: [:show, :destroy, :update, :edit]
 
-  def index
-    @projects = current_user.projects
-    @project = Project.new
-    @projects = Project.all.includes(:client)
-  end
+ def index
+  @projects = current_user.projects.includes(:client)
+  @project = Project.new
+end
 
   def show
   end

@@ -1,7 +1,7 @@
 class InvoicesController < ApplicationController
 
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.joins(:project).where(projects: { user_id: current_user.id })
     @invoice = Invoice.new
   end
 
@@ -56,7 +56,7 @@ class InvoicesController < ApplicationController
   )
     GmailSender.send_gmail(
       current_user,
-      client.email,
+      client,
       "Your Invoice from #{@invoice.project.name}",
       "Here is your invoice for project #{@invoice.project.name}.",
       invoice_html
