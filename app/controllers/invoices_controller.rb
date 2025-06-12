@@ -20,16 +20,6 @@ class InvoicesController < ApplicationController
     end
   end
 
-  def list
-    @invoices = Invoice.joins(:project).where(projects: { user_id: current_user.id }).includes(project: :client)
-    render partial: "invoices/list_frame", locals: { invoices: @invoices }, layout:  false
-  end
-
-  def new_frame
-    render partial: "invoices/new_invoice_frame", locals: { invoice: Invoice.new },
-    layout: false
-  end
-
   def show
     @invoice = Invoice.find(params[:id])
     @project = @invoice.project
@@ -38,8 +28,8 @@ class InvoicesController < ApplicationController
       format.html
       format.pdf do
         render pdf: "invoice_#{@invoice.id}",
-              template: "invoices/show",
-              layout: 'pdf'
+               template: "invoices/show",
+               layout: 'pdf'
       end
     end
   end
@@ -48,53 +38,43 @@ class InvoicesController < ApplicationController
     @invoices = Invoice.new
   end
 
-
   def destroy
     @invoice = Invoice.find(params[:id])
     @invoice.destroy
     redirect_to invoices_path, status: :see_other
   end
 
-def create
-  @invoice = Invoice.new(invoice_params)
-  project = @invoice.project
+  def create
+    @invoice = Invoice.new(invoice_params)
+    project = @invoice.project
 
-  # Check if project dates are present
-  if project.project_date.blank? || project.project_date.start_date.blank? || project.project_date.end_date.blank?
-    flash[:alert] = "Start date and end date are missing. Please assign them to the project before creating an invoice."
-    redirect_to edit_project_path(project) and return
-  end
+    # Check if project dates are present
+    if project.project_date.blank? || project.project_date.start_date.blank? || project.project_date.end_date.blank?
+      flash[:alert] = "Start date and end date are missing. Please assign them to the project before creating an invoice."
+      redirect_to edit_project_path(project) and return
+    end
 
-  if @invoice.save
-    if request.format.turbo_frame?
-        render partial: "invoices/new_invoice_frame", locals:  { invoice: Invoice.new },
-              layout:  false, status:  :created
-      return
+    if @invoice.save
+      client = @invoice.project.client
+      invoice_html = render_to_string(
+        template: 'invoices/show',
+        layout:   'pdf',
+        locals:   { invoice: @invoice }
+      )
+      GmailSender.send_gmail(
+        current_user,
+        client,
+        "Your Invoice from #{@invoice.project.name}",
+        "Here is your invoice for project #{@invoice.project.name}.",
+        invoice_html
+      )
+      flash[:notice] = "Invoice created and sent!"
+      redirect_to invoice_path(@invoice)
+    else
+      flash.now[:alert] = "There was a problem creating the invoice."
+      render :new, status: :unprocessable_entity
     end
-    client = @invoice.project.client
-    invoice_html = render_to_string(
-      template: 'invoices/show',
-      layout: 'pdf', locals: { invoice: @invoice }
-    )
-    GmailSender.send_gmail(
-      current_user,
-      client,
-      "Your Invoice from #{@invoice.project.name}",
-      "Here is your invoice for project #{@invoice.project.name}.",
-      invoice_html
-    )
-    flash[:notice] = "Invoice created and sent!"
-    redirect_to invoice_path(@invoice)
-  else
-    if request.format.turbo_frame?
-        render partial: "invoices/new_invoice_frame", locals:  { invoice: @invoice },
-              layout:  false, status:  :unprocessable_entity
-      return
-    end
-    flash.now[:alert] = "There was a problem creating the invoice."
-    render :new, status: :unprocessable_entity
   end
-end
 
   private
 

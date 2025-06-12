@@ -1,9 +1,4 @@
-<% frame_html_opts = {} %>
-<% if local_assigns[:turbo_frame_id].present? %>
-<% frame_html_opts[:data] = { turbo_frame: local_assigns[:turbo_frame_id] } %>
-<% end %>
-
-<%= simple_form_for(invoice, html: frame_html_opts) do |f| %>
+<%= simple_form_for(invoice) do |f| %>
   <%= f.input :tax %>
   <%= f.input :description %>
   <%= f.input :project_id, collection: Project.all.collect { |p| [p.name, p.id] }, prompt: "Select Project" %>

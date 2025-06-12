@@ -1,6 +1,6 @@
-<div style="display: flex;">
-  <div style="flex: 2; margin-right: 2rem;">
-    <h2>Invoices</h2>
+
+<div class="container mt-4">
+  <h2>Invoices</h2>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -19,27 +19,10 @@
           <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
           <td><%= invoice.project.status ? "Active" : "Inactive" %></td>
           <td>
-            <%= link_to invoice_path(invoice) do %>
-              <%= image_tag("invoice.png", alt: "Invoice", width: 32, height: 32) %>
-            <% end %>
+            <%= link_to "Invoice", invoice_path(invoice), class: "text-decoration-none" %>
           </td>
         </tr>
       <% end %>
       </tbody>
     </table>
-  </div>
-
-  <div style="flex: 1;">
-    <h2>New Invoice</h2>
-    <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
-      <%= render "shared/invoicesForm", invoice: @invoice %>
-      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-        <%= button_to "Preview Invoice",
-                      preview_invoices_path,
-                      method: :get,
-                      form: { target: "_blank" },
-                      class: "btn btn-secondary" %>
-      </div>
-    </div>
-  </div>
 </div>
