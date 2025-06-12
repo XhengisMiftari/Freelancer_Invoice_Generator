@@ -1,0 +1,43 @@
+.invoice-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: 8px;
+  font-family: 'Arial', sans-serif;
+  color: #222;
+}
+.invoice-header {
+  border-bottom: 2px solid #eee;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+}
+.invoice-date {
+  color: #888;
+}
+.invoice-section, .invoice-dates, .invoice-pricing {
+  margin-bottom: 18px;
+}
+.invoice-total {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #2c3e50;
+}
+.invoice-signature {
+  margin-top: 40px;
+}
+.signature-img {
+  width: 180px;
+  height: auto;
+  border-bottom: 1px solid #ccc;
+}
+.signature-placeholder {
+  width: 180px;
+  height: 60px;
+  border-bottom: 1px dashed #bbb;
+  color: #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+}

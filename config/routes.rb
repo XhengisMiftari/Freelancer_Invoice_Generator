@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations' # <-- add this line
+  }
   root to: "pages#home"
 
   get "dashboard/invoices", to: "pages#invoices",  as: :dashboard_invoices
