@@ -17,7 +17,7 @@ end
 
   def create
     @project = Project.new(project_params)
-    @project.user = current_user
+    # @project.user = current_user
     if @project.save
       render partial: "projects/new_project_frame", locals: { project: Project.new }, layout: false, status: :created
     else

@@ -1,6 +1,6 @@
 <%= simple_form_for(invoice) do |f| %>
   <%= f.input :tax %>
   <%= f.input :description %>
-  <%= f.input :project_id, collection: Project.all.collect { |p| [p.name, p.id] }, prompt: "Select Project" %>
+  <%= f.input :project_id, collection: current_user.projects, prompt: "Select Project" %>
   <%= f.submit "Create & Send Invoice", class: "btn btn-success" %>
 <% end %>
