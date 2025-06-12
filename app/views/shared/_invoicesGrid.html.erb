@@ -1,5 +1,79 @@
 
 <div class="container mt-4">
+<<<<<<< HEAD
+  <div class="d-flex flex-wrap justify-content-between gap-3">
+    <!-- Card 1 -->
+    <div class="card shadow-sm flex-fill" style="min-width: 200px;">
+      <div class="card-body">
+        <h5 class="card-title text-muted">Total Invoices</h5>
+        <h1> <%= @invoices.count%> </h1>
+      </div>
+    </div>
+
+
+    <!-- Card 2 -->
+    <div class="card shadow-sm flex-fill" style="min-width: 200px;">
+      <div class="card-body">
+        <h5 class="card-title text-muted">Issue Date </h5>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card shadow-sm flex-fill" style="min-width: 200px;">
+      <div class="card-body">
+        <h5 class="card-title text-muted">Due Date</h5>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+
+
+  </div>
+
+  <div class=" justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"%>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+ <h2>Invoices</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th>Invoice</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% if @invoices.any? %>
+      <% @invoices.each do |invoice| %>
+        <tr>
+          <td><%= link_to invoice.project.name, invoice_path(invoice) %></td>
+          <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+          <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+          <td><%= invoice.project.status ? "Active" : "Inactive" %></td>
+          <td>
+            <%= link_to invoice_path(invoice) do %>
+              <%= image_tag("invoice.png", alt: "Invoice", width: 32, height: 32) %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <% else  %>
+      <em>no invoices found</em>
+      <% end %>
+      </tbody>
+    </table>
+=======
   <h2>Invoices</h2>
   <table class="table table-striped">
     <thead>
@@ -25,4 +99,5 @@
     <% end %>
     </tbody>
   </table>
+>>>>>>> master
 </div>
