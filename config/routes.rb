@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'users/registrations' # <-- add this line
+    registrations: 'users/registrations'
   }
   root to: "pages#home"
   get "dashboard/invoices", to: "pages#invoices",  as: :dashboard_invoices
