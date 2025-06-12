@@ -1,7 +1,7 @@
 class InvoicesController < ApplicationController
 
   def index
-    @invoices = Invoice.joins(:project).where(projects: { user_id: current_user.id })
+    @invoices = current_user.invoices
     @invoice = Invoice.new
     @invoices = Invoice.all
   end

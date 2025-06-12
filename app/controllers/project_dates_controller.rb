@@ -7,14 +7,10 @@ class ProjectDatesController < ApplicationController
 
   if params[:view] == "year"
     @calendar_year = year
-    @project_dates = ProjectDate
-      .joins(:project)
-      .where(projects: { user_id: current_user.id })
+    @project_dates = current_user.project_dates
       .where(start_date: Date.new(year, 1, 1)..Date.new(year, 12, 31))
   else
-    @project_dates = ProjectDate
-      .joins(:project)
-      .where(projects: { user_id: current_user.id })
+    @project_dates = current_user.project_dates
       .where(start_date: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
   end
   @project_date = ProjectDate.new
