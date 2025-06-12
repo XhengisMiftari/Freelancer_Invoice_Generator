@@ -41,10 +41,11 @@ body {
 }
 
 #sidebar header {
-  background-color: #263238;
-  font-size: 20px;
-  line-height: 75px;
-  text-align: center;
+  background-color: #5f6e8f5c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0 8px 0; // More space above and below
 }
 
 #sidebar header a {
@@ -80,7 +81,10 @@ body {
 }
 
 .navbar-brand img {
-  width: 60px;
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+  margin-bottom: 10px; // Space between logo and avatar
 }
 
 .dropdown-menu{
@@ -92,10 +96,10 @@ body {
 }
 
 .avatar, .avatar.rounded-circle {
-  width: 56px;   // or your preferred size
-  height: 56px;
+  width: 64px;
+  height: 64px;
   object-fit: cover;
   border-radius: 50%;
   display: block;
-  margin: 0 auto 12px auto;
+  margin: 0 auto 28px auto; // More space below avatar before menu
 }
