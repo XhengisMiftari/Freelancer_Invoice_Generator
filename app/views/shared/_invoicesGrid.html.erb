@@ -1,5 +1,6 @@
 
 <div class="container mt-4">
+<<<<<<< HEAD
   <div class="d-flex flex-wrap justify-content-between gap-3">
     <!-- Card 1 -->
     <div class="card shadow-sm flex-fill" style="min-width: 200px;">
@@ -72,4 +73,31 @@
       <% end %>
       </tbody>
     </table>
+=======
+  <h2>Invoices</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Invoice</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= link_to invoice.project.name, invoice_path(invoice) %></td>
+        <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+        <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+        <td><%= invoice.project.status ? "Active" : "Inactive" %></td>
+        <td>
+          <%= link_to "Invoice", invoice_path(invoice), class: "text-decoration-none" %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+>>>>>>> master
 </div>

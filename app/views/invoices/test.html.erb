@@ -1,0 +1,37 @@
+<<<<<<< HEAD
+<div style="max-width:700px;margin:0 auto;padding:32px;background:#fff;border-radius:8px;font-family:Arial,sans-serif;color:#222;">
+  <div style="border-bottom:2px solid #eee;margin-bottom:24px;padding-bottom:12px;">
+    <h1>Invoice #<%= @invoice.id %></h1>
+    <p style="color:#888;"><strong>Date:</strong> <%= @invoice.created_at.strftime("%Y-%m-%d") %></p>
+  </div>
+
+  <div style="margin-bottom:18px;">
+    <p><strong>Project:</strong> <%= @invoice.project.name %></p>
+    <p><strong>Client:</strong> <%= @invoice.project.client&.company_name %></p>
+    <p><strong>Description:</strong> <%= @invoice.description %></p>
+  </div>
+
+  <div style="margin-bottom:18px;">
+    <p><strong>Start Date:</strong> <%= @invoice.project.project_date.start_date %></p>
+    <p><strong>End Date:</strong> <%= @invoice.project.project_date.end_date %></p>
+  </div>
+
+  <div style="margin-bottom:18px;">
+    <p><strong>Price:</strong> <%= number_to_currency(@invoice.project.price) %></p>
+    <p><strong>Tax:</strong> <%= @invoice.tax %>%</p>
+    <% total = @invoice.project.price * (1 + (@invoice.tax.to_f / 100)) %>
+    <p style="font-size:1.2em;font-weight:bold;color:#2c3e50;"><strong>Total (with tax):</strong> <%= number_to_currency(total) %></p>
+  </div>
+</div>
+=======
+<!-- filepath: app/views/invoices/show.pdf.erb -->
+<h1>Invoice #<%= @invoice.id %></h1>
+<p><strong>Date:</strong> <%= @invoice.created_at.strftime("%Y-%m-%d") %></p>
+<p><strong>Project:</strong> <%= @invoice.project.name %></p>
+<p><strong>Client:</strong> <%= @invoice.project.client&.company_name %></p>
+<p><strong>Description:</strong> <%= @invoice.description %></p>
+<p><strong>Tax:</strong> <%= @invoice.tax %></p>
+<p><strong>Price:</strong> <%= number_to_currency(@invoice.project.price) %></p>
+<p><strong>Start Date:</strong> <%= @invoice.project.project_date.start_date %></p>
+<p><strong>End Date:</strong> <%= @invoice.project.project_date.end_date %></p>
+>>>>>>> master
