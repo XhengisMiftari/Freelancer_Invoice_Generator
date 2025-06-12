@@ -23,20 +23,29 @@
       </li>
        <li>
         <a href="#">
-          <%= link_to "Dashboard", root_path, class: "nav-link" %>
-
+          <%= link_to root_path, class: "nav-link" do %>
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          <% end %>
+       </li>
+      <li>
+          <%= link_to clients_path, class: "nav-link" do %>
+           <i class="fas fa-users"></i> Clients
+          <% end %>
       </li>
       <li>
-          <%= link_to "Clients", clients_path, class: "nav-link" %>
+          <%= link_to projects_path, class: "nav-link" do %>
+            <i class="fas fa-folder-open"></i> Projects
+          <% end %>
       </li>
       <li>
-          <%= link_to "Projects", projects_path, class: "nav-link" %>
+          <%= link_to invoices_path, class: "nav-link" do %>
+            <i class="fas fa-file-invoice"></i> Invoices
+          <% end %>
       </li>
       <li>
-          <%= link_to "Invoices", invoices_path, class: "nav-link" %>
-      </li>
-      <li>
-          <%= link_to 'Calendar', project_dates_path, class: "nav-link" %>
+          <%= link_to project_dates_path, class: "nav-link" do %>
+            <i class="fas fa-calendar-alt"></i> Calendar
+          <% end %>
       </li>
       <% else %>
       <li class="nav-item">
