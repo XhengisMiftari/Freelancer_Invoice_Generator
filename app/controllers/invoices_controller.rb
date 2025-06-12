@@ -20,6 +20,15 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def list
+    @invoices = Invoice.joins(:project).where(projects: { user_id: current_user.id }).includes(project: :client)
+    render partial: "invoices/list_frame", locals: { invoices: @invoices }, layout:  false
+  end
+
+  def new_frame
+    render partial: "invoices/new_invoice_frame", locals: { invoice: Invoice.new },
+    layout: false
+  end
 
   def show
     @invoice = Invoice.find(params[:id])
@@ -57,6 +66,11 @@ def create
   end
 
   if @invoice.save
+    if request.format.turbo_frame?
+        render partial: "invoices/new_invoice_frame", locals:  { invoice: Invoice.new },
+              layout:  false, status:  :created
+      return
+    end
     client = @invoice.project.client
     invoice_html = render_to_string(
       template: 'invoices/show',
@@ -72,6 +86,11 @@ def create
     flash[:notice] = "Invoice created and sent!"
     redirect_to invoice_path(@invoice)
   else
+    if request.format.turbo_frame?
+        render partial: "invoices/new_invoice_frame", locals:  { invoice: @invoice },
+              layout:  false, status:  :unprocessable_entity
+      return
+    end
     flash.now[:alert] = "There was a problem creating the invoice."
     render :new, status: :unprocessable_entity
   end

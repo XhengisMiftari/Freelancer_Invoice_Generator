@@ -1,18 +1,11 @@
-<%= simple_form_for(invoice) do |f| %>
+<% frame_html_opts = {} %>
+<% if local_assigns[:turbo_frame_id].present? %>
+<% frame_html_opts[:data] = { turbo_frame: local_assigns[:turbo_frame_id] } %>
+<% end %>
+
+<%= simple_form_for(invoice, html: frame_html_opts) do |f| %>
   <%= f.input :tax %>
   <%= f.input :description %>
   <%= f.input :project_id, collection: Project.all.collect { |p| [p.name, p.id] }, prompt: "Select Project" %>
   <%= f.submit "Create & Send Invoice", class: "btn btn-success" %>
 <% end %>
-
-
-<%# def create
-  @invoice = Invoice.new(invoice_params)
-
-  if @invoice.save
-    redirect_to @invoice, notice: "Invoice was successfully created."
-  else
-    flash.now[:alert] = "There was a problem creating the invoice."
-    render :new, status: :unprocessable_entity
-  end
-end %>
