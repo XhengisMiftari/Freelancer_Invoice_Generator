@@ -11,10 +11,6 @@
       </div>
     <% end %>
 
-<<<<<<< HEAD
-<%= render "shared/invoicesGrid" %>
-
-=======
     <!-- Clients -->
     <%= link_to dashboard_clients_path,
                 data:  { turbo_frame: "dash_grid", action: "dash#activate" },
@@ -42,4 +38,3 @@
     <%= render "shared/invoicesGrid", invoices: @invoices %>
   </turbo-frame>
 </div>
->>>>>>> master
