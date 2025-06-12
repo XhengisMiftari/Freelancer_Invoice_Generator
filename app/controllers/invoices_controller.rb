@@ -47,7 +47,7 @@ class InvoicesController < ApplicationController
   end
 
   def create
-   @invoice = Invoice.new(invoice_params)
+  @invoice = Invoice.new(invoice_params)
   if @invoice.save
     client = @invoice.project.client
     invoice_html = render_to_string(

@@ -1,0 +1,24 @@
+<%= turbo_frame_tag dom_id(invoice) do %>
+  <tr>
+    <td><%= link_to invoice.project.name, invoice_path(invoice) %></td>
+    <td><%= invoice.project.project_date&.start_date&.strftime("%Y-%m-%d") %></td>
+    <td><%= invoice.project.project_date&.end_date&.strftime("%Y-%m-%d") %></td>
+    <td><%= invoice.project.status ? "Active" : "Inactive" %></td>
+    <td>
+      <%= link_to invoice_path(invoice) do %>
+        <%= image_tag "invoice.png", alt: "Invoice", width: 32, height: 32 %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to "Edit",
+                  edit_invoice_path(invoice),
+                  data: { turbo_frame: "new_invoice" } %>
+
+      <%= link_to "Remove",
+                  invoice_path(invoice),
+                  data: { turbo_method: :delete,
+                          turbo_confirm: "Delete this invoice?",
+                          turbo_frame: "_top" } %>
+    </td>
+  </tr>
+<% end %>

@@ -13,10 +13,15 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     if @client.save
-      redirect_to @client, notice: "Client has been created."
+      render partial: "clients/new_client_frame", locals:  { client: Client.new }, layout:  false, status:  :created
     else
-      render :new, status: :unprocessable_entity
+      render partial: "clients/new_client_frame", locals:  { client: @client }, layout:  false, status:  :unprocessable_entity
     end
+  end
+
+  def list
+    @clients = Client.order(:company_name)
+    render partial: "clients/list_frame", locals: { clients: @clients }, layout:  false
   end
 
   def new
