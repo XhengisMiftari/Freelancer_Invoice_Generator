@@ -54,28 +54,6 @@ class InvoicesController < ApplicationController
       redirect_to edit_project_path(project) and return
     end
 
-<<<<<<< HEAD
-    if @invoice.save
-      client = @invoice.project.client
-      invoice_html = render_to_string(
-        template: 'invoices/show',
-        layout:   'pdf',
-        locals:   { invoice: @invoice }
-      )
-      GmailSender.send_gmail(
-        current_user,
-        client,
-        "Your Invoice from #{@invoice.project.name}",
-        "Here is your invoice for project #{@invoice.project.name}.",
-        invoice_html
-      )
-      flash[:notice] = "Invoice created and sent!"
-      redirect_to invoice_path(@invoice)
-    else
-      flash.now[:alert] = "There was a problem creating the invoice."
-      render :new, status: :unprocessable_entity
-    end
-=======
   if @invoice.save
     client = @invoice.project.client
     invoice_html = render_to_string(
@@ -94,7 +72,6 @@ class InvoicesController < ApplicationController
   else
     flash.now[:alert] = "There was a problem creating the invoice."
     render :new, status: :unprocessable_entity
->>>>>>> master
   end
 
   private
