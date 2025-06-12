@@ -30,5 +30,4 @@ class PagesController < ApplicationController
     @projects = current_user.projects.includes(:client, :project_date)
     render partial: "shared/projectsGrid", locals:  { projects: @projects }, layout: "dash_frame"
   end
-
 end
