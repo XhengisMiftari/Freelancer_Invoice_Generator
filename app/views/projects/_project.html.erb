@@ -1,5 +1,5 @@
 <tr id="<%= dom_id(project) %>">
-  <td><%= link_to project.name, project %></td>
+  <td><%= project.name %></td>
   <td>
     <span class="badge <%= project.status ? 'bg-success' : 'bg-warning' %>">
       <%= project.status ? "Completed" : "Pending" %>
@@ -12,5 +12,5 @@
     <%= link_to "Delete", project_path(project),
       method: :delete, data: { confirm: "Are you sure?" }, data: { turbo_frame: "_top" },
       class: "btn btn-sm btn-danger" %>
-</td>
+  </td>
 </tr>

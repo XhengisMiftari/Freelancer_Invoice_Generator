@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   resources :invoices do
     collection do
       get :preview
+      get :list
+      get :new_frame
     end
   end
 end
