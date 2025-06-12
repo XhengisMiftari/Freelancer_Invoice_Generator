@@ -1,0 +1,60 @@
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">FLIG<i> FreelancerInvoiceGenerator </i> is built for freelancers, makes invoicing simple. Create, download, and send professional invoices in PDF format. Track payments, manage clients, and stay organized—no accounting skills or expensive software needed.</p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Categories</h6>
+            <ul class="footer-links">
+              <li>
+                <%= link_to "Dashboard", root_path, class: "nav-link" %>
+              </li>
+              <li>
+                <%= link_to "Clients", clients_path, class: "nav-link" %>
+              </li>
+              <li>
+                <%= link_to "Projects", projects_path, class: "nav-link" %>
+              </li>
+              <li>
+                <%= link_to "Invoices", invoices_path, class: "nav-link" %>
+              </li>
+              <li>
+                <%= link_to 'Calendar', project_dates_path, class: "nav-link" %>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Contact information</h6>
+            <ul class="footer-links">
+              <li><a href="">Contact Us</a>
+              <p><i class="fa-solid fa-phone"> </i> +49 123 456 7890</p>
+              <p><i class="fa-solid fa-envelope"></i> flig@gmail.com</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2025 All Rights Reserved by
+         <a href="#">FLIG</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
