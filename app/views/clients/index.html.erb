@@ -1,11 +1,17 @@
-<h1>All Clients</h1>
+<div style="display: flex;">
+  <div style="flex: 2; margin-right: 2rem;">
+    <h2>Clients</h2>
 
-<ul>
-  <% @clients.each do |client| %>
-    <li>
-      <%= link_to "#{client.first_name} #{client.last_name}", client %>
-    </li>
-  <% end %>
-</ul>
+    <turbo-frame id="clients_list_frame" src="<%= list_clients_path %>">
+      <%= render partial: "clients/table", locals: { clients: @clients } %>
+    </turbo-frame>
+  </div>
 
-<%= link_to "New Client", new_client_path %>
+  <div style="flex: 1;">
+    <h2>New Client</h2>
+
+    <turbo-frame id="new_client_form">
+      <%= render "shared/clientForm", client: Client.new %>
+    </turbo-frame>
+  </div>
+</div>
