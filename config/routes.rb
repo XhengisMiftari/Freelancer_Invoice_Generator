@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations' # <-- add this line
   }
   root to: "pages#home"
-
+  get 'dashboard', to: 'pages#dashboard'
   resources :projects do
     collection do
       get :list
