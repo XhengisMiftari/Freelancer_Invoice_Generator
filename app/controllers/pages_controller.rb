@@ -5,13 +5,14 @@ class PagesController < ApplicationController
     if params[:query].present?
     @invoices = @invoices.where("description ILIKE ?", "%#{params[:query]}%")
     end
+    @invoices_count = current_user.invoices.count
+    @clients_count  = current_user.clients.count
+    @projects_count = current_user.projects.count
   end
 
   def index
     @invoices = Invoice.all
-    @invoices_count = current_user.invoices.count
-    @clients_count  = current_user.clients.count
-    @projects_count = current_user.projects.count
+
     @invoices = current_user.invoices.includes(project: :client)
   end
 
