@@ -1,28 +1,39 @@
 
 <div class="container mt-4">
+ <div class=" justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"%>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
   <h2>Invoices</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Full Name</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Status</th>
-          <th>Invoice</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @invoices.each do |invoice| %>
-        <tr>
-          <td><%= link_to invoice.project.name, invoice_path(invoice) %></td>
-          <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
-          <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
-          <td><%= invoice.project.status ? "Active" : "Inactive" %></td>
-          <td>
-            <%= link_to "Invoice", invoice_path(invoice), class: "text-decoration-none" %>
-          </td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Invoice</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= link_to invoice.project.name, invoice_path(invoice) %></td>
+        <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+        <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+        <td><%= invoice.project.status ? "Active" : "Inactive" %></td>
+        <td>
+          <%= link_to "Invoice", invoice_path(invoice), class: "text-decoration-none" %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>

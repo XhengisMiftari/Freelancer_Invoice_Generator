@@ -3,8 +3,7 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :update, :edit, :destroy]
 
   def index
-    @clients = Client.joins(:projects).where(projects: { user_id: current_user.id }).distinct
-
+    @clients = Client.left_outer_joins(:projects).where("projects.user_id = :uid OR projects.id IS NULL", uid: current_user.id).distinct
   end
 
   def show
@@ -21,7 +20,7 @@ class ClientsController < ApplicationController
   end
 
   def list
-    @clients = Client.joins(:projects).where(projects: { user_id: current_user.id }).distinct.order(:company_name)
+    @clients = Client.left_outer_joins(:projects).where("projects.user_id = :uid OR projects.id IS NULL", uid: current_user.id).distinct.order(:company_name)
     render partial: "clients/list_frame", locals: { clients: @clients }, layout: false
   end
 
