@@ -1,0 +1,58 @@
+
+<div class="container mt-4">
+  <div class="d-flex flex-wrap justify-content-between gap-3">
+    <!-- Card 1 -->
+    <div class="card shadow-sm flex-fill" style="min-width: 200px;">
+      <div class="card-body">
+        <h5 class="card-title text-muted">Total Invoices</h5>
+        <h1> <%= @invoices.count%> </h1>
+      </div>
+    </div>
+
+
+    <!-- Card 2 -->
+    <div class="card shadow-sm flex-fill" style="min-width: 200px;">
+      <div class="card-body">
+        <h5 class="card-title text-muted">Issue Date </h5>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card shadow-sm flex-fill" style="min-width: 200px;">
+      <div class="card-body">
+        <h5 class="card-title text-muted">Due Date</h5>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+
+
+  </div>
+ <h2>Invoices</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th>Invoice</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @invoices.each do |invoice| %>
+        <tr>
+          <td><%= link_to invoice.project.name, invoice_path(invoice) %></td>
+          <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+          <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+          <td><%= invoice.project.status ? "Active" : "Inactive" %></td>
+          <td>
+            <%= link_to invoice_path(invoice) do %>
+              <%= image_tag("invoice.png", alt: "Invoice", width: 32, height: 32) %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+</div>
