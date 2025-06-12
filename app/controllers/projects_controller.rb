@@ -2,18 +2,17 @@ class ProjectsController < ApplicationController
 
   before_action :set_project, only: [:show, :destroy, :update, :edit]
 
-  def index
-    @projects = current_user.projects
-    @project = Project.new
-    @projects = Project.all.includes(:client)
-  end
+ def index
+  @projects = current_user.projects.includes(:client)
+  @project = Project.new
+end
 
   def show
   end
 
   def list
-    @projects = Project.order(created_at: :desc).includes(:client)
-    render partial: "projects/list_frame", locals: { projects: @projects}, layout: false
+    @projects = current_user.projects.order(created_at: :desc).includes(:client)
+    render partial: "projects/list_frame", locals: { projects: @projects }, layout: false
   end
 
   def create
