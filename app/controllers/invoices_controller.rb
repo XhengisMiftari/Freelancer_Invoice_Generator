@@ -59,7 +59,7 @@ def create
   if @invoice.save
     client = @invoice.project.client
     invoice_html = render_to_string(
-      template: 'invoices/show',
+      template: 'invoices/test',
       layout: 'pdf', locals: { invoice: @invoice }
     )
     GmailSender.send_gmail(
