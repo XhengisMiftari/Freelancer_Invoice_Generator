@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   }
   root to: "pages#home"
 
+  get "dashboard/invoices", to: "pages#invoices",  as: :dashboard_invoices
+  get "dashboard/clients",  to: "pages#clients",   as: :dashboard_clients
+  get "dashboard/projects", to: "pages#projects",  as: :dashboard_projects
+
   resources :projects do
     collection do
       get :list
@@ -19,6 +23,8 @@ Rails.application.routes.draw do
   resources :invoices do
     collection do
       get :preview
+      get :list
+      get :new_frame
     end
   end
 end

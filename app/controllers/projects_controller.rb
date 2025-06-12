@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   before_action :set_project, only: [:show, :destroy, :update, :edit]
 
- def index
+def index
   @projects = current_user.projects.includes(:client)
   @project = Project.new
 end
