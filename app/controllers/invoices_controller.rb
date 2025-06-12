@@ -46,14 +46,22 @@ class InvoicesController < ApplicationController
     redirect_to invoices_path, status: :see_other
   end
 
-  def create
+def create
   @invoice = Invoice.new(invoice_params)
+  project = @invoice.project
+
+  # Check if project dates are present
+  if project.project_date.blank? || project.project_date.start_date.blank? || project.project_date.end_date.blank?
+    flash[:alert] = "Start date and end date are missing. Please assign them to the project before creating an invoice."
+    redirect_to edit_project_path(project) and return
+  end
+
   if @invoice.save
     client = @invoice.project.client
     invoice_html = render_to_string(
-    template: 'invoices/show',
-    layout: 'pdf', locals: { invoice: @invoice }
-  )
+      template: 'invoices/show',
+      layout: 'pdf', locals: { invoice: @invoice }
+    )
     GmailSender.send_gmail(
       current_user,
       client,

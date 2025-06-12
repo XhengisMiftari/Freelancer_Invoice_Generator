@@ -11,8 +11,8 @@ end
   end
 
   def list
-    @projects = Project.order(created_at: :desc).includes(:client)
-    render partial: "projects/list_frame", locals: { projects: @projects}, layout: false
+    @projects = current_user.projects.order(created_at: :desc).includes(:client)
+    render partial: "projects/list_frame", locals: { projects: @projects }, layout: false
   end
 
   def create
