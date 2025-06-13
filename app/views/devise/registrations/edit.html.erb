@@ -27,6 +27,15 @@
                     required: false,
                     input_html: { autocomplete: "new-password", class: "form-control" } %>
 
+        <%# ➕ Signature Upload Section %>
+          <% if resource.signature.attached? %>
+            <div class="mb-3 text-center">
+              <p>Current Signature:</p>
+              <%= image_tag url_for(resource.signature), style: "width: 150px; border: 1px solid #ccc;" %>
+            </div>
+          <% end %>
+
+          <%= f.input :signature, as: :file, label: "E-signature", input_html: { class: "form-control" } %>
       </div>
 
       <div class="form-actions text-center mt-3">
