@@ -1,9 +1,9 @@
 <div class="container mt-4" data-controller="dash">
   <div class="d-flex flex-wrap justify-content-between gap-3" data-dash-target="cards">
     <!-- Invoices -->
-    <%= link_to dashboard_invoices_path,
-                data:  { turbo_frame: "dash_grid", action: "dash#activate" },
-                class: "card shadow-sm flex-fill text-decoration-none",
+    <%= link_to dashboard_invoices_path,  # points to the linked route in routes
+                data:  { turbo_frame: "dash_grid", action: "dash#activate" },   # when clicked, only this frame is refreshed with
+                class: "card shadow-sm flex-fill text-decoration-none",         # the matching route and attr of "dash_grid"
                 style: "min-width: 200px;" do %>
       <div class="card-body">
         <h5 class="card-title text-muted">Total Invoices</h5>
@@ -11,9 +11,9 @@
       </div>
     <% end %>
     <!-- Clients -->
-    <%= link_to dashboard_clients_path,
-                data:  { turbo_frame: "dash_grid", action: "dash#activate" },
-                class: "card shadow-sm flex-fill text-decoration-none",
+    <%= link_to dashboard_clients_path,   # points to the linked route in routes
+                data:  { turbo_frame: "dash_grid", action: "dash#activate" },   # when clicked, only this frame is refreshed with
+                class: "card shadow-sm flex-fill text-decoration-none",         # the matching route and attr of "dash_grid"
                 style: "min-width: 200px;" do %>
       <div class="card-body">
         <h5 class="card-title text-muted">Total Clients</h5>
@@ -21,9 +21,9 @@
       </div>
     <% end %>
     <!-- Projects -->
-    <%= link_to dashboard_projects_path,
-                data:  { turbo_frame: "dash_grid", action: "dash#activate" },
-                class: "card shadow-sm flex-fill text-decoration-none",
+    <%= link_to dashboard_projects_path,  # points to the linked route in routes
+                data:  { turbo_frame: "dash_grid", action: "dash#activate" },   # when clicked, only this frame is refreshed with
+                class: "card shadow-sm flex-fill text-decoration-none",         # the matching route and attr of "dash_grid"
                 style: "min-width: 200px;" do %>
       <div class="card-body">
         <h5 class="card-title text-muted">Total Projects</h5>
@@ -35,3 +35,4 @@
     <%= render "shared/invoicesGrid", invoices: @invoices %>
   </turbo-frame>
 </div>
+<%# This page is being called on initially on the dashboard path %>
