@@ -21,4 +21,14 @@
     <% total = @invoice.project.price * (1 + (@invoice.tax.to_f / 100)) %>
     <p style="font-size:1.2em;font-weight:bold;color:#2c3e50;"><strong>Total (with tax):</strong> <%= number_to_currency(total) %></p>
   </div>
+
+<% if @user.signature.attached? %>
+  <div style="margin-top: 30px;">
+    <p>Signed by <%= @user.first_name %>:</p>
+    <%= image_tag(
+          rails_blob_url(@user.signature, host: "http://localhost:3000"),
+          style: "height: 100px; object-fit: contain; border: 1px solid #ccc; background: #f9f9f9; padding: 4px;"
+        ) %>
+  </div>
+<% end %>
 </div>

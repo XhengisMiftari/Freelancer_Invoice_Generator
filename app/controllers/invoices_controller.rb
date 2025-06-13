@@ -10,7 +10,7 @@ class InvoicesController < ApplicationController
     # Example: render the latest invoice as a PDF preview
     @invoice = Invoice.last
     @project = @invoice.project
-
+    @user = current_user
     respond_to do |format|
       format.html { render :show }
       format.pdf do
@@ -24,7 +24,7 @@ class InvoicesController < ApplicationController
   def show
     @invoice = Invoice.find(params[:id])
     @project = @invoice.project
-
+  @user = current_user
     respond_to do |format|
       format.html
       format.pdf do
