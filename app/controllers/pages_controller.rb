@@ -3,7 +3,8 @@ class PagesController < ApplicationController
   def home
     @invoices = current_user.invoices
     if params[:query].present?
-    @invoices = @invoices.where("description ILIKE ?", "%#{params[:query]}%")
+    @invoices = @invoices.where("description, ILIKE ?", "%#{params[:query]}%")
+
     end
     @invoices_count = current_user.invoices.count
     @clients_count  = current_user.clients.count
