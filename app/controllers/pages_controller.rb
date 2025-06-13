@@ -12,7 +12,6 @@ class PagesController < ApplicationController
 
   def index
     @invoices = Invoice.all
-
     @invoices = current_user.invoices.includes(project: :client)
   end
 
