@@ -45,7 +45,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 #pdf generator
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+# gem 'wkhtmltopdf-binary'
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -69,6 +69,11 @@ group :development, :test do
   gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'wkhtmltopdf-binary', '~> 0.12.6'
+end
+
+group :production do
+  gem 'wkhtmltopdf-heroku', '~> 2.12.6'
 end
 
 group :development do
