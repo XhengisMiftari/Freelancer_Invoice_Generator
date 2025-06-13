@@ -3,7 +3,6 @@ class InvoicesController < ApplicationController
   def index
     @invoices = current_user.invoices
     @invoice = Invoice.new
-    @invoices = Invoice.all
   end
 
   def preview
@@ -24,7 +23,7 @@ class InvoicesController < ApplicationController
   def show
     @invoice = Invoice.find(params[:id])
     @project = @invoice.project
-  @user = current_user
+    @user = current_user
     respond_to do |format|
       format.html
       format.pdf do
@@ -48,6 +47,7 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(invoice_params)
     project = @invoice.project
+    @user = current_user
 
     # Check if project dates are present
     if project.project_date.blank? || project.project_date.start_date.blank? || project.project_date.end_date.blank?
