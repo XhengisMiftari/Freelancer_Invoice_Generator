@@ -4,6 +4,6 @@
   <%= f.input :status, as: :select, collection: [["Completed", true], ["Ongoing", false]], prompt: "Select Status" %>
 
   <%= f.input :client_id, collection: current_user.clients.map { |c| ["#{c.first_name} #{c.last_name}", c.id] }, prompt: "Select Client" %>
-  <%= f.button :submit,
+  <%= f.button :submit, data: { turbo_confirm: "Create this project?" },
             style: "background:#2c3e50; color:#fff; border-radius:4px; padding:0.6rem 1rem;" %>
 <% end %>

@@ -2,5 +2,5 @@
   <%= f.input :start_date, as: :date, start_year: Date.today.year - 5, end_year: Date.today.year + 5, order: [:year, :month, :day] %>
   <%= f.input :end_date, as: :date, start_year: Date.today.year - 5, end_year: Date.today.year + 5, order: [:year, :month, :day] %>
   <%= f.input :project_id, collection: current_user.projects, prompt: "Select Project" %>
-  <%= f.button :submit %>
+  <%= f.button :submit, data: { turbo_confirm: "Create these project dates??" } %>
 <% end %>

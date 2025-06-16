@@ -14,7 +14,7 @@
                   edit_invoice_path(invoice),
                   data: { turbo_frame: "new_invoice" } %>
 
-      <%= link_to "Removee",
+      <%= link_to "Remove",
                   invoice_path(invoice),
                   data: { turbo_method: :delete,
                           turbo_confirm: "Delete this invoice?",

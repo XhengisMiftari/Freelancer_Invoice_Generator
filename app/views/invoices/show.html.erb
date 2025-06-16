@@ -8,11 +8,12 @@
   <strong>Description</strong>
   <%= @invoice.description %>
 </p>
-
+<div data-controller="swal-confirm">
 <%= link_to "Delete",
   invoice_path(@invoice),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?", swal_text: "This cannot be reverted!!"}
 %>
+</div>
 
 
 <ul>

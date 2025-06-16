@@ -1,7 +1,7 @@
 
 <div class="container mt-4">
- <div class=" justify-content-center">
-  <div class="col-sm-8 my-3">
+  <div class=" justify-content-center">
+    <div class="col-sm-8 my-3">
     <%= form_with url: root_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
@@ -9,8 +9,8 @@
             placeholder: "Type a keyword"%>
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
+    </div>
   </div>
-</div>
   <h2>Invoices</h2>
   <table class="table table-striped">
     <thead>
