@@ -9,7 +9,7 @@
       <%= project.status ? "Completed" : "Pending" %>
     </span>
   </td>
-  <td><%= project.client.first_name %><%= project.client.last_name %></td>
+  <td><%= project.client.first_name %> <%= project.client.last_name %></td>
   <td><%= project.client&.company_name %></td>
   <td>
     <%= link_to edit_project_path(project), data: { turbo_frame: "_top" }, class: "btn btn-sm btn-secondary" do %>
