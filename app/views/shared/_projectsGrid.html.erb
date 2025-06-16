@@ -21,7 +21,7 @@
         <td><%= project.project_date&.end_date&.strftime("%Y-%m-%d") %></td>
         <td><%= project.status ? "Active" : "Inactive" %></td>
         <td>
-          <%= link_to "Project", project_path(project), class: "text-decoration-none" %>
+          <%= link_to "Project", project_path(project), data: { turbo_frame: "_top" }, class: "text-decoration-none" %>
         </td>
       </tr>
     <% end %>

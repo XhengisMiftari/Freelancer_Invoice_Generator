@@ -7,7 +7,7 @@
   </div>
   <div style="flex: 1;">
     <h2>New Project</h2>
-    <turbo-frame id="new_project_form">
+    <turbo-frame id="new_project_form" data-controller="swal-confirm">
       <%= render "shared/projectsForm", project: Project.new %>
     </turbo-frame>
   </div>

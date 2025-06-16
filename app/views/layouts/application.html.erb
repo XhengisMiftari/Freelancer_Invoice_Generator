@@ -6,19 +6,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
     <div style="display: flex; min-height: 100vh;">
       <%= render "shared/sidebar" %>
       <main style="flex: 1;">
-        <%= render "shared/flashes" %>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <div style="min-height: calc(100vh - 100px);">
+        <%# <%= render "shared/flashes"            REMOVED THE ALERST AND NOTICES WHEN CREATING/DELETING/SIGNING IN - restore these lines to add them back in %>
+        <%# <p class="notice"><%= notice %>
+        <%# <p class="alert"><%= alert %>
+        <div style="min-height: calc(100vh - 100px);" class="pt-3">
           <%= yield %>
         </div>
         <%= render "shared/footer" %>

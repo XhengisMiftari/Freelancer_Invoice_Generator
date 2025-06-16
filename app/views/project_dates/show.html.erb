@@ -13,10 +13,10 @@
   <strong>End Date:</strong>
   <%= @project_date.end_date.strftime("%Y-%m-%d") %>
 </p>
-
-<%= link_to "Edit", edit_project_date_path(@project_date), class: "btn btn-primary" %>
-<%= link_to "Back", project_dates_path, class: "btn btn-secondary" %>
-
-<%= link_to project_date_path(@project_date), data: { turbo_method: :delete,  confirm: "Are you sure you want to delete this project date?" }, class: "btn btn-danger", title: "Delete" do %>
-  <i class="fa fa-trash"></i>
-<% end %>
+<div data-controller="swal-confirm">
+  <%= link_to "Edit", edit_project_date_path(@project_date), class: "btn btn-primary" %>
+  <%= link_to "Back", project_dates_path, class: "btn btn-secondary" %>
+  <%= link_to project_date_path(@project_date), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this project date?", swal_text: "This cannot be reverted!!" }, class: "btn btn-danger", title: "Delete" do %>
+    <i class="fa fa-trash"></i>
+  <% end %>
+</div>

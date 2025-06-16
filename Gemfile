@@ -40,6 +40,8 @@ gem "devise"
 gem 'omniauth-google-oauth2'
 gem 'google-apis-gmail_v1'
 
+#cloudinary
+gem "cloudinary"
 
 gem 'dotenv-rails', groups: [:development, :test]
 
