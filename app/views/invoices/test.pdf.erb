@@ -30,7 +30,7 @@
           style: "height: 100px; object-fit: contain; border: 1px solid #ccc; background: #f9f9f9; padding: 4px;"
         ) %>
   <% if (img_data = base64_image(cl_image_path(@user.signature.key))) %>
-    <%= image_tag img_data, height: 100, width: 100 %>
+    <%= image_tag img_data, height: 100, width: 100, crop: :fill %>
     <% else %>
       <p>Image unavailable</p>
     <% end %>
