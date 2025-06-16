@@ -13,9 +13,7 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       format.html { render :show }
       format.pdf do
-        render pdf: "invoice_preview",
-               template: "invoices/test",
-               layout: 'pdf'
+        render pdf: "invoice_preview", template: "invoices/test", layout: 'pdf'
       end
     end
   end
@@ -27,9 +25,7 @@ class InvoicesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "invoice_#{@invoice.id}",
-              template: "invoices/test",
-              layout: 'pdf'
+        render pdf: "invoice_#{@invoice.id}", template: "invoices/test", layout: 'pdf'
       end
     end
   end

@@ -9,3 +9,4 @@ export default class extends Controller {
     event.currentTarget.classList.add("active")
   }
 }
+// the action "activate" is run after clicking the "active" css class -> Turbo does GET request for dashboard -> routes.rb

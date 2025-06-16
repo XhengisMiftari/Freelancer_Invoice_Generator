@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :update, :edit, :destroy]
 
   def index
-    # @clients = Client.left_outer_joins(:projects).where("projects.user_id = :uid OR projects.id IS NULL", uid: current_user.id).distinct
+    # @clients = Client.left_outer_joins(:projects).where("projects.user_id = :uid OR projects.id IS NULL", uid: current_user.id).distinct <- This was to fix the dropdown menu showing project-less clients as well as to prevent to see clients form other users
     @clients = current_user.clients
   end
 
