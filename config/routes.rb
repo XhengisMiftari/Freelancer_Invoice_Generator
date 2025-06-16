@@ -4,9 +4,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: "pages#home"
-  get "dashboard/invoices", to: "pages#invoices",  as: :dashboard_invoices
-  get "dashboard/clients",  to: "pages#clients",   as: :dashboard_clients
-  get "dashboard/projects", to: "pages#projects",  as: :dashboard_projects
+  get "dashboard/invoices", to: "pages#invoices",  as: :dashboard_invoices  # links to the dashboard cards in home.html.erb
+  get "dashboard/clients",  to: "pages#clients",   as: :dashboard_clients   # links to the dashboard cards in home.html.erb
+  get "dashboard/projects", to: "pages#projects",  as: :dashboard_projects  # links to the dashboard cards in home.html.erb
+  # we arrive at dashboard after the GET from dash_controller.js -> activates the methods in pagesController ("to: "pages#invoices"") -> pages_controller.rb
   resources :projects do
     collection do
       get :list

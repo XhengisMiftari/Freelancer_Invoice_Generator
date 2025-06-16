@@ -10,7 +10,7 @@
   <div style="flex: 1;">
     <h2>New Client</h2>
 
-    <turbo-frame id="new_client_form">
+    <turbo-frame id="new_client_form" data-controller="swal-confirm">
       <%= render "shared/clientForm", client: Client.new %>
     </turbo-frame>
   </div>
