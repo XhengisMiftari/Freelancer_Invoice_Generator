@@ -6,7 +6,7 @@ class Client < ApplicationRecord
 
   validates :first_name, :last_name, :email, :phone_number, :date_of_birth, presence: true
   validates :email,
-    format: { with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email" },
-    uniqueness: { case_sensitive: false }
+    format: { with: URI::MailTo::EMAIL_REGEXP, message: "must be a valid email" }
+    # uniqueness: { case_sensitive: false }
   validates :company_name, length: { maximum: 100 }, allow_blank: true
 end
