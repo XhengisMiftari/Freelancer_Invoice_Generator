@@ -3,6 +3,23 @@ class InvoicesController < ApplicationController
   def index
     @invoices = current_user.invoices
     @invoice = Invoice.new
+
+    #testing some chart.js
+   full_year_months = Date::MONTHNAMES.compact # ["January", ..., "December"]
+   @monthly_totals = full_year_months.index_with(0)
+
+    # Step 2: Actual invoice counts per month
+  actual_data = current_user.invoices
+    .where(created_at: Time.current.beginning_of_year..Time.current.end_of_year)
+    .group_by_month(:created_at, format: "%B", time_zone: "Europe/Berlin")
+    .count
+
+  # Step 3: Merge actual data into default list
+    @monthly_totals.merge!(actual_data)
+
+  # Step 4: Send to view
+    @chart_labels = @monthly_totals.keys
+    @chart_values = @monthly_totals.values
   end
 
   def preview

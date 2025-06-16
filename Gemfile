@@ -43,6 +43,9 @@ gem 'google-apis-gmail_v1'
 #cloudinary
 gem "cloudinary"
 
+#gem "groupdate"
+gem "groupdate"
+
 gem 'dotenv-rails', groups: [:development, :test]
 
 #pdf generator
