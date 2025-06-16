@@ -48,10 +48,6 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new(invoice_params)
     project = @invoice.project
     @user = current_user
-<<<<<<< HEAD
-=======
-
->>>>>>> 27450c08492ad8d5e13a80db6352a9931821f140
     # Check if project dates are present
     if project.project_date.blank? || project.project_date.start_date.blank? || project.project_date.end_date.blank?
       flash[:alert] = "Start date and end date are missing. Please assign them to the project before creating an invoice."
