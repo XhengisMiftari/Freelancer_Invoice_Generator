@@ -15,7 +15,7 @@
         <td><%= client.email %></td>
         <td><%= client.projects.count %></td>
         <td>
-          <%= link_to "Client", client_path(client), class: "text-decoration-none" %>
+          <%= link_to "Client",  client_path(client), data: { turbo_frame: "_top" } %>
         </td>
       </tr>
     <% end %>
