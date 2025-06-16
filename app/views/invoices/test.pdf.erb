@@ -25,10 +25,15 @@
 <% if @user.signature.attached? %>
   <div style="margin-top: 30px;">
     <p>Signed by <%= @user.first_name %>:</p>
-    <%= image_tag(
-          rails_blob_url(@user.signature, host: "http://localhost:3000"),
+    <%# <%= image_tag(
+          rails_blob_url(@user.signature, host: "https://warm-temple-03998-5d0f9070a376.herokuapp.com"),
           style: "height: 100px; object-fit: contain; border: 1px solid #ccc; background: #f9f9f9; padding: 4px;"
         ) %>
+  <% if (img_data = base64_image(cl_image_path(@user.signature.key))) %>
+    <%= image_tag img_data, height: 100, width: 100, crop: :fill %>
+    <% else %>
+      <p>Image unavailable</p>
+    <% end %>
   </div>
 <% end %>
 </div>

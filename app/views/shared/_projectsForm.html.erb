@@ -1,8 +1,9 @@
-<%= simple_form_for(project, html: { data: { controller: "project-form", turbo_frame: "new_project_form" } }) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :price %>
-  <%= f.input :status, as: :select, collection: [["Completed", true], ["Ongoing", false]], prompt: "Select Status" %>
+<%= simple_form_for(project, html: { class: "form", data: { controller: "project-form", turbo_frame: "new_project_form" } }) do |f| %>
+  <%= f.input :name, placeholder: "Name *", label: false %>
+  <%= f.input :price, placeholder: "Price *", label: false %>
+  <%= f.input :status, as: :select, collection: [["Completed", true], ["Ongoing", false]], prompt: "Select Status *" %>
 
-  <%= f.input :client_id, collection: current_user.clients.map { |c| ["#{c.first_name} #{c.last_name}", c.id] }, prompt: "Select Client" %>
-  <%= f.button :submit %>
+  <%= f.input :client_id, collection: current_user.clients.map { |c| ["#{c.first_name} #{c.last_name}", c.id] }, prompt: "Select Client *" %>
+  <%= f.button :submit, data: { turbo_confirm: "Create this project?" },
+            style: "background:#2c3e50; color:#fff; border-radius:4px; padding:0.6rem 1rem;" %>
 <% end %>
