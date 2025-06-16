@@ -3,7 +3,6 @@ class InvoicesController < ApplicationController
   def index
     @invoices = current_user.invoices
     @invoice = Invoice.new
-    @invoices = Invoice.all
   end
 
   def preview
@@ -22,7 +21,7 @@ class InvoicesController < ApplicationController
   def show
     @invoice = Invoice.find(params[:id])
     @project = @invoice.project
-  @user = current_user
+    @user = current_user
     respond_to do |format|
       format.html
       format.pdf do

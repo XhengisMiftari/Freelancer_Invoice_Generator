@@ -25,6 +25,7 @@ Rails.application.configure do
 
 
   Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
+  # Rails.application.routes.default_url_options[:host] = 'https://warm-temple-03998-5d0f9070a376.herokuapp.com'
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 

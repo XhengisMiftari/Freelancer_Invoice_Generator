@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: %i[ home invoices clients projects ]
   def home
-    @invoices = Invoice.all
+    @invoices = current_user.invoices
     if params[:query].present?
     @invoices = @invoices.where("description ILIKE ?", "%#{params[:query]}%")
     end
@@ -11,7 +11,6 @@ class PagesController < ApplicationController
   end
 
   def index
-    @invoices = Invoice.all
     @invoices = current_user.invoices.includes(project: :client)
   end
 
