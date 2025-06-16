@@ -24,8 +24,8 @@ Rails.application.configure do
   # config.public_file_server.enabled = false
 
 
-   Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
-  #Rails.application.routes.default_url_options[:host] = 'https://warm-temple-03998-5d0f9070a376.herokuapp.com'
+  #Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
+  Rails.application.routes.default_url_options[:host] = 'https://warm-temple-03998-5d0f9070a376.herokuapp.com'
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
@@ -40,7 +40,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :cloudinary
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
