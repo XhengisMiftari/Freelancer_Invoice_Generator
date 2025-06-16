@@ -5,9 +5,9 @@
     <%= form_with url: root_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
-            class: "form-control",
+            class: "input",
             placeholder: "Type a keyword"%>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "search", name: "", class: "button"%>
     <% end %>
   </div>
 </div>
