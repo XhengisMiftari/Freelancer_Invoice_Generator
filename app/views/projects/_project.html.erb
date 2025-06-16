@@ -1,16 +1,24 @@
 <tr id="<%= dom_id(project) %>">
-  <td><%= project.name %></td>
+  <td>
+    <%= link_to project_path(project), data: { turbo_frame: "_top" }, class: "btn btn-sm btn-primary"  do %>
+    <%= project.name %>
+  <% end %>
+  </td>
   <td>
     <span class="badge <%= project.status ? 'bg-success' : 'bg-warning' %>">
       <%= project.status ? "Completed" : "Pending" %>
     </span>
   </td>
+  <td><%= project.client.first_name %><%= project.client.last_name %></td>
   <td><%= project.client&.company_name %></td>
   <td>
-    <%= link_to "Show",  project_path(project), data: { turbo_frame: "_top" }, class: "btn btn-sm btn-primary"   %>
-    <%= link_to "Edit",  edit_project_path(project), data: { turbo_frame: "_top" }, class: "btn btn-sm btn-secondary" %>
-    <%= link_to "Delete", project_path(project),
+    <%= link_to edit_project_path(project), data: { turbo_frame: "_top" }, class: "btn btn-sm btn-secondary" do %>
+      <i class="fa-solid fa-pen-to-square"></i>
+    <% end %>
+    <%= link_to project_path(project),
       method: :delete, data: { confirm: "Are you sure?" }, data: { turbo_frame: "_top" },
-      class: "btn btn-sm btn-danger" %>
+      class: "btn btn-sm btn-danger" do %>
+      <i class="fa-solid fa-trash"></i>
+      <% end %>
   </td>
 </tr>
