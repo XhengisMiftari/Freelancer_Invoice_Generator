@@ -25,12 +25,17 @@
     <tbody>
     <% @invoices.each do |invoice| %>
       <tr>
-        <td><%= link_to invoice.project.name, invoice_path(invoice) %></td>
+        <td> <%= link_to project_path(invoice.project), data: { turbo_frame: "_top" } do %>
+          <%= invoice.project.name %>
+          <% end %>
+        </td>
         <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
         <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
         <td><%= invoice.status ? "Paid" : "Unpaid" %></td>
         <td>
-          <%= link_to "Invoice", invoice_path(invoice), class: "text-decoration-none" %>
+          <%= link_to invoice_path(invoice), data: { turbo_frame: "_top" } do %>
+            <%= image_tag("invoice.png", alt: "Invoice", width: 32, height: 32) %>
+          <% end %>
         </td>
       </tr>
     <% end %>
