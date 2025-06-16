@@ -19,7 +19,7 @@
   <div style="margin-bottom:18px;">
     <p><strong>Price:</strong> <%= number_to_currency(@invoice.project.price) %></p>
     <p><strong>Tax:</strong> <%= @invoice.tax %>%</p>
-    <% total = @invoice.project.price * (1 + (@invoice.tax.to_f / 100)) %>
+    <% total = @invoice.project.price / (1 - (@invoice.tax.to_f / 100)) %>
     <p style="font-size:1.2em;font-weight:bold;color:#2c3e50;"><strong>Total (with tax):</strong> <%= number_to_currency(total) %></p>
   </div>
 
