@@ -2,7 +2,7 @@
   <!-- Sidebar -->
   <div id="sidebar">
     <header>
-      <%= link_to "#", class: "navbar-brand" do %>
+      <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo6.png" %>
       <% end %>
     </header>
@@ -26,12 +26,12 @@
 
 
           <%= link_to root_path, class: "nav-link" do %>
-           <i class="fas fa-tachometer-alt"></i> Dashboard
+          <i class="fas fa-tachometer-alt"></i> Dashboard
           <% end %>
-       </li>
+      </li>
       <li>
           <%= link_to clients_path, class: "nav-link" do %>
-           <i class="fas fa-users"></i> Clients
+          <i class="fas fa-users"></i> Clients
           <% end %>
       </li>
       <li>
