@@ -1,5 +1,5 @@
 <h2>Invoice Details</h2>
-  <%= link_to "Download PDF", invoice_path(@invoice, format: :pdf), class: "btn btn-primary mb-3" %>
+  <%= link_to "Download PDF", invoice_path(@invoice, format: :pdf), class: "btn btn-primary mb-3", target: "_blank" %>
 <p>
   <strong>Tax amount</strong>
   <%= @invoice.tax %>
