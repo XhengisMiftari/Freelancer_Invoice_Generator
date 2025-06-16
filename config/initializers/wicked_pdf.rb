@@ -7,5 +7,5 @@ WickedPdf.config = {
     end
   end,
   enable_local_file_access: true,
-  extra: '--enable-external-links --ignore-load-errors --no-check-certificate'
+  extra: '--enable-external-links'
 }
