@@ -6,4 +6,5 @@ WickedPdf.config = {
       Gem.bin_path('wkhtmltopdf-binary', 'wkhtmltopdf')
     end
   end
+  enable_local_file_access: true
 }

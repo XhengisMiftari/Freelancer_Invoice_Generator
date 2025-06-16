@@ -26,10 +26,11 @@
 <% if @user.signature.attached? %>
   <div style="margin-top: 30px;">
     <p>Signed by <%= @user.first_name %>:</p>
-    <%= image_tag(
+    <%# <%= image_tag(
           rails_blob_url(@user.signature, host: "https://warm-temple-03998-5d0f9070a376.herokuapp.com"),
           style: "height: 100px; object-fit: contain; border: 1px solid #ccc; background: #f9f9f9; padding: 4px;"
         ) %>
+    <%= cl_image_tag @user.signature.key, height: 100, width: 100, crop: :fill, secure: true %>
   </div>
 <% end %>
 </div>
