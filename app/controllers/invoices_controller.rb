@@ -69,35 +69,56 @@ end
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
-    project = @invoice.project
-    @user = current_user
-    # Check if project dates are present
-    if project.project_date.blank? || project.project_date.start_date.blank? || project.project_date.end_date.blank?
-      flash[:alert] = "Start date and end date are missing. Please assign them to the project before creating an invoice."
-      redirect_to edit_project_path(project) and return
-    end
+  @invoice = Invoice.new(invoice_params)
+  project = @invoice.project
+  @user = current_user
 
-    if @invoice.save
-      client = @invoice.project.client
-      invoice_html = render_to_string(
-        template: 'invoices/test',
-        layout: 'pdf', locals: { invoice: @invoice }
-      )
-      GmailSender.send_gmail(
-        current_user,
-        client,
-        "Your Invoice from #{@invoice.project.name}",
-        "Here is your invoice for project #{@invoice.project.name}.",
-        invoice_html
-      )
-      flash[:notice] = "Invoice created and sent!"
-      redirect_to invoice_path(@invoice)
-    else
-      flash.now[:alert] = "There was a problem creating the invoice."
-      render :new, status: :unprocessable_entity
-    end
+  # Check if project dates are present
+  if project.project_date.blank? || project.project_date.start_date.blank? || project.project_date.end_date.blank?
+    flash[:alert] = "Start date and end date are missing. Please assign them to the project before creating an invoice."
+    redirect_to edit_project_path(project) and return
   end
+
+  if @invoice.save
+    # 1. Create Stripe Checkout Session
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        price_data: {
+          currency: 'eur',
+          product_data: { name: "Invoice ##{@invoice.id}" },
+          unit_amount: @invoice.price_cents || 0, # price_cents should be in cents
+        },
+        quantity: 1,
+      }],
+      mode: 'payment',
+      success_url: invoice_url(@invoice),
+      cancel_url: invoice_url(@invoice),
+      customer_email: @invoice.project.client.email
+    )
+    @invoice.update!(checkout_session_id: session.id)
+
+    client = @invoice.project.client
+    invoice_html = render_to_string(
+      template: 'invoices/test',
+      layout: 'pdf', locals: { invoice: @invoice }
+    )
+    # 2. Send email with Stripe payment link
+    stripe_url = session.url
+    GmailSender.send_gmail(
+      current_user,
+      client,
+      "Your Invoice from #{@invoice.project.name}",
+      "Here is your invoice for project #{@invoice.project.name}.<br>Pay online: <a href='#{stripe_url}'>Pay with Stripe</a>",
+      invoice_html
+    )
+    flash[:notice] = "Invoice created and sent!"
+    redirect_to invoice_path(@invoice)
+  else
+    flash.now[:alert] = "There was a problem creating the invoice."
+    render :new, status: :unprocessable_entity
+  end
+end
 
   private
 
