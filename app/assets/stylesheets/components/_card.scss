@@ -1,4 +1,157 @@
 .card.active {
   border: 2px solid #0d6efd;
 }
-// This is for the Turbo Cards on home.html and  the dash_controller.js
+
+.card-show {
+  width: 400px;
+  height: 600px;
+  background: #616385d6;
+  position: relative;
+  display: grid;
+  place-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.list-item-show {
+  padding: 10px;
+}
+
+ul {
+  list-style: none;
+}
+
+.border {
+  pointer-events: none;
+  /* If you use position or z-index, make sure it's below the content: */
+  position: absolute;
+  z-index: 0;
+}
+
+.card-show .content, .card-show > div:not(.border) {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
+// #logo-main, #logo-second {
+//   height: 100%;
+// }
+
+// #logo-main {
+//   fill: #bd9f67;
+// }
+
+// #logo-second {
+//   padding-bottom: 10px;
+//   fill: none;
+//   stroke: #bd9f67;
+//   stroke-width: 1px;
+// }
+
+// .border {
+//   position: absolute;
+//   inset: 0px;
+//   border: 2px solid #bd9f67;
+//   opacity: 0;
+//   transform: rotate(10deg);
+//   transition: all 0.5s ease-in-out;
+// }
+
+// .bottom-text {
+//   position: absolute;
+//   left: 50%;
+//   bottom: 13px;
+//   transform: translateX(-50%);
+//   font-size: 6px;
+//   text-transform: uppercase;
+//   padding: 0px 5px 0px 8px;
+//   color: #bd9f67;
+//   background: #243137;
+//   opacity: 0;
+//   letter-spacing: 7px;
+//   transition: all 0.5s ease-in-out;
+// }
+
+// .content {
+//   transition: all 0.5s ease-in-out;
+// }
+
+// .content .logo {
+//   height: 35px;
+//   position: relative;
+//   width: 33px;
+//   overflow: hidden;
+//   transition: all 1s ease-in-out;
+// }
+
+// .content .logo .logo1 {
+//   height: 33px;
+//   position: absolute;
+//   left: 0;
+// }
+
+// .content .logo .logo2 {
+//   height: 33px;
+//   position: absolute;
+//   left: 33px;
+// }
+
+// .content .logo .trail {
+//   position: absolute;
+//   right: 0;
+//   height: 100%;
+//   width: 100%;
+//   opacity: 0;
+// }
+
+// .content .logo-bottom-text {
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   transform: translate(-50%, -50%);
+//   margin-top: 30px;
+//   color: #bd9f67;
+//   padding-left: 8px;
+//   font-size: 11px;
+//   opacity: 0;
+//   letter-spacing: none;
+//   transition: all 0.5s ease-in-out 0.5s;
+// }
+
+
+
+
+.card-show:hover {
+  border-radius: 10px;
+  transform: scale(1.1);
+}
+
+.card-show:hover .border {
+  inset: 15px;
+  opacity: 1;
+  transform: rotate(0);
+}
+
+
+
+
+
+// .card:hover .bottom-text {
+//   letter-spacing: 3px;
+//   opacity: 1;
+//   transform: translateX(-50%);
+// }
+
+// .card:hover .content .logo-bottom-text {
+//   opacity: 1;
+//   letter-spacing: 9.5px;
+// }
+
+// .card:hover .trail {
+//   animation: trail 1s ease-in-out;
+// }

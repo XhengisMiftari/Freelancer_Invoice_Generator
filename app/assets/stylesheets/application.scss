@@ -13,6 +13,8 @@
 
 @import "components/calendar";
 
+@import "components/forms";
+
 .rounded-circle {
   border-radius: 50%;
   object-fit: cover;
@@ -21,9 +23,9 @@ a {
   text-decoration: none
 }
 
-.bg-primary {
-  background-color: rgb(102, 168, 146) !important;
-}
+// .bg-primary {
+//   background-color: rgb(102, 168, 146) !important;
+// }
 
 body {
   background-color:#e5eeeeea;
