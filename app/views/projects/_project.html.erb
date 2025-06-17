@@ -1,6 +1,6 @@
 <tr id="<%= dom_id(project) %>">
   <td>
-    <%= link_to project_path(project), data: { turbo_frame: "_top" }, class: "btn btn-sm btn-primary"  do %>
+    <%= link_to project_path(project), data: { turbo_frame: "_top" }, class: "button"  do %>
     <%= project.name %>
   <% end %>
   </td>
@@ -12,13 +12,17 @@
   <td><%= project.client.first_name %> <%= project.client.last_name %></td>
   <td><%= project.client&.company_name %></td>
   <td>
-    <%= link_to edit_project_path(project), data: { turbo_frame: "_top" }, class: "btn btn-sm btn-secondary" do %>
-      <i class="fa-solid fa-pen-to-square"></i>
+    <%= link_to project_path(project), data: { turbo_frame: "_top" }, class: "show" do  %>
+    <i class="fa-solid fa-eye"></i>
+    <% end %>
+
+    <%= link_to edit_project_path(project), data: { turbo_frame: "_top" }, class: "edit" do %>
+    <i class="fa-solid fa-file-pen"></i>
     <% end %>
     <%= link_to project_path(project),
-      method: :delete, data: { tubo_confirm: "Are you sure?" }, data: { turbo_frame: "_top" },
-      class: "btn btn-sm btn-danger" do %>
-      <i class="fa-solid fa-trash"></i>
-      <% end %>
+      method: :delete, data: { confirm: "Are you sure?" }, data: { turbo_frame: "_top" },
+      class: "delete" do %>
+    <i class="fa-solid fa-trash"></i>
+    <% end %>
   </td>
 </tr>

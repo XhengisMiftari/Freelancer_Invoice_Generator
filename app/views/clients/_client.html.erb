@@ -3,12 +3,20 @@
   <td><%= "#{client.first_name} #{client.last_name}" %></td>
   <td><%= mail_to client.email %></td>
   <td>
-    <%= link_to "Show",  client_path(client), data: { turbo_frame: "_top" },
-          class: "btn btn-sm btn-primary" %>
-    <%= link_to "Edit",  edit_client_path(client), data: { turbo_frame: "_top" },
-          class: "btn btn-sm btn-secondary" %>
-    <%= link_to "Delete", client_path(client),
+    <%= link_to client_path(client), data: { turbo_frame: "_top" },
+          class: "show" do %>
+          <i class="fa-solid fa-eye"></i>
+          <% end %>
+
+    <%= link_to edit_client_path(client), data: { turbo_frame: "_top" },
+          class: "edit" do %>
+          <i class="fa-solid fa-file-pen"></i>
+          <% end %>
+
+    <%= link_to client_path(client),
           method: :delete, data: { confirm: "Are you sure?", turbo_frame: "_top" },
-          class: "btn btn-sm btn-danger" %>
+          class: "delete" do  %>
+          <i class="fa-solid fa-trash"></i>
+          <% end %>
   </td>
 </tr>
