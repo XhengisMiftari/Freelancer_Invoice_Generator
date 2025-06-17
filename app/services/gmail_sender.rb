@@ -14,12 +14,18 @@ class GmailSender
       token_credential_uri: 'https://accounts.google.com/o/oauth2/token'
     )
     raise ArgumentError, "Recipient email address is missing" if to.blank?
-    message = Mail.new(
-      to: to.email,
-      from: user.email,
-      subject: subject,
-      body: body
-    )
+    message = Mail.new do
+     to to.email
+     from user.email
+     subject subject
+
+    html_part do
+      content_type 'text/html; charset=UTF-8'
+      body body
+  end
+end
+
+
     pdf_content = WickedPdf.new.pdf_from_string(pdf_string)
 
       message.attachments['test.pdf'] = {

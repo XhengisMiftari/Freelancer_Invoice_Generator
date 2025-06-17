@@ -78,8 +78,10 @@ end
     flash[:alert] = "Start date and end date are missing. Please assign them to the project before creating an invoice."
     redirect_to edit_project_path(project) and return
   end
-
+  #formula for the tax calculation
+    @invoice.price = @invoice.project.price / (1 - (@invoice.tax.to_f / 100))
   if @invoice.save
+
     # 1. Create Stripe Checkout Session
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -87,7 +89,7 @@ end
         price_data: {
           currency: 'eur',
           product_data: { name: "Invoice ##{@invoice.id}" },
-          unit_amount: @invoice.price_cents || 0, # price_cents should be in cents
+          unit_amount: @invoice.price.to_i || 0, # price_cents should be in cents
         },
         quantity: 1,
       }],
@@ -105,6 +107,7 @@ end
     )
     # 2. Send email with Stripe payment link
     stripe_url = session.url
+
     GmailSender.send_gmail(
       current_user,
       client,
