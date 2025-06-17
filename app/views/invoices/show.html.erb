@@ -1,5 +1,5 @@
 <h2>Invoice Details</h2>
-  <%= link_to "Download PDF", invoice_path(@invoice, format: :pdf), class: "btn btn-primary mb-3", target: "_blank" %>
+  <%= link_to "Download PDF", invoice_path(@invoice, format: :pdf), class: "ibutton", target: "_blank" %>
 <p>
   <strong>Tax amount</strong>
   <%= @invoice.tax %>
@@ -9,10 +9,10 @@
   <%= @invoice.description %>
 </p>
 <div data-controller="swal-confirm">
-<%= link_to "Delete",
-  invoice_path(@invoice),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this invoice?", swal_text: "This cannot be reverted!"}
-%>
+<%= link_to invoice_path(@invoice), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this invoice?", swal_text: "This cannot be reverted!"
+}, class: "button" do %>
+<i class="fa-solid fa-trash"></i>
+<% end %>
 </div>
 
 
@@ -25,4 +25,6 @@
     <li class="list-group-item"><strong>Start Date: </strong><%=@invoice.project.project_date.start_date %></li>
     <li class="list-group-item"><strong>End Date: </strong><%= @invoice.project.project_date.end_date %></li>
 </ul>
-<%= link_to "Back", invoices_path %>
+<%= link_to invoices_path, class: "button" do %>
+<i class="fa-solid fa-rotate-left"></i>
+<% end %>
