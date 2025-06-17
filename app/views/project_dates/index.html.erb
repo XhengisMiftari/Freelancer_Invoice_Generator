@@ -1,7 +1,7 @@
 <% if params[:view] == "year" %>
-  <%= link_to "Show Month Calendar", project_dates_path, class: "btn btn-outline-primary mb-3" %>
+  <%= link_to "Show Month Calendar", project_dates_path, class: "button" %>
 <% else %>
-  <%= link_to "Show Year Calendar", project_dates_path(view: "year"), class: "btn btn-outline-primary mb-3" %>
+  <%= link_to "Show Year Calendar", project_dates_path(view: "year"), class: "button" %>
 <% end %>
 
 <div style="display: flex;">

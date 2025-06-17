@@ -17,10 +17,8 @@
           <i class="fa-solid fa-file-pen"></i>
           <% end %>
 
-    <%= link_to client_path(client),
-          method: :delete, data: { confirm: "Are you sure?", turbo_frame: "_top" },
-          class: "delete" do  %>
-          <i class="fa-solid fa-trash"></i>
-          <% end %>
+    <%= link_to client_path(client), data: { controller: "swal-confirm", turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this client?", swal_text: "This cannot be reverted!", turbo_frame: "_top" }, class: "button" do %>
+    <i class="fa-solid fa-trash"></i>
+    <% end %>
   </td>
 </tr>

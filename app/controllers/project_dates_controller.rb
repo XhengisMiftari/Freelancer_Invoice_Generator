@@ -17,7 +17,7 @@ class ProjectDatesController < ApplicationController
 end
 
   def show
-
+    @project = @project_date.project
   end
 
   def new

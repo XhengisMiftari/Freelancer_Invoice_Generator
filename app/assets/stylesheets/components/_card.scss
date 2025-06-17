@@ -3,9 +3,9 @@
 }
 
 .card-show {
-  width: 400px;
+  width: 600px;
   height: 600px;
-  background: #616385d6;
+  background: #B8CFCE;
   position: relative;
   display: grid;
   place-content: center;
@@ -34,7 +34,9 @@ ul {
   z-index: 1;
 }
 
-
+.list-group-item#card{
+ background-color:rgba(255, 255, 255, 0.7);
+}
 
 
 
@@ -53,14 +55,14 @@ ul {
 //   stroke-width: 1px;
 // }
 
-// .border {
-//   position: absolute;
-//   inset: 0px;
-//   border: 2px solid #bd9f67;
-//   opacity: 0;
-//   transform: rotate(10deg);
-//   transition: all 0.5s ease-in-out;
-// }
+.border {
+  position: absolute;
+  inset: 0px;
+  border: 2px solid #bd9f67;
+  opacity: 0;
+  transform: rotate(10deg);
+  transition: all 0.5s ease-in-out;
+}
 
 // .bottom-text {
 //   position: absolute;
@@ -129,6 +131,7 @@ ul {
 .card-show:hover {
   border-radius: 10px;
   transform: scale(1.1);
+  background-color: #7F8CAA;
 }
 
 .card-show:hover .border {
