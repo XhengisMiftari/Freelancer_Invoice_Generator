@@ -1,44 +1,75 @@
-<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-  <div class="card-show">
-    <div class="border"></div>
-    <div class="card-header text-center text-black">
-      <h2><%= @project.name %></h2>
-      <div class="d-flex flex-row align-items-start">
-        <!-- Image on the left -->
-        <div class="me-4">
-          <%= image_tag "projectshow.jpg", alt: "Project Image", class: "img-fluid rounded", style: "width: 180px; height: 250px; object-fit: cover;" %>
+<div id="projectCarousel" class="carousel slide" data-bs-touch="true">
+  <div class="carousel-inner">
+    <% @projects.each do |project| %>
+      <div class="carousel-item <%= 'active' if project == @project %>">
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+          <div class="card-show">
+            <div class="border"></div>
+
+            <div class="card-header text-center text-black">
+              <h2><%= project.name %></h2>
+
+              <div class="d-flex flex-row align-items-start">
+                <div class="me-4">
+                  <%= image_tag "projectshow.jpg",
+                                alt: "Project Image",
+                                class: "img-fluid rounded",
+                                style: "width: 180px; height: 250px; object-fit: cover;" %>
+                </div>
+                <ul class="list-group list-group-flush mb-3 text-start flex-grow-1">
+                  <li class="list-item-show"><strong>Client: </strong><%= project.client&.company_name %></li>
+
+                  <% if project.project_date %>
+                    <li class="list-item-show"><strong>Start Date: </strong><%= project.project_date.start_date %></li>
+                    <li class="list-item-show"><strong>End Date: </strong><%= project.project_date.end_date %></li>
+                  <% end %>
+
+                  <li class="list-item-show"><strong>Price: </strong>$ <%= project.price %></li>
+
+                  <li class="list-item-show">
+                    <strong>Status: </strong>
+                    <span class="badge <%= project.status ? 'bg-success' : 'bg-warning' %>">
+                      <%= project.status ? 'Paid' : 'Not paid' %>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div data-controller="swal-confirm" class="mt-3">
+                <%= link_to project_path(project),
+                            data: { turbo_method: :delete,
+                                    turbo_confirm: "Are you sure?",
+                                    swal_text: "This cannot be reverted!" },
+                            class: "button" do %>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
+
+                <%= link_to projects_path, class: "button" do %>
+                  <i class="fas fa-folder-open"></i>
+                <% end %>
+
+                <%= link_to client_path(project.client), class: "button" do %>
+                  <i class="fa-regular fa-user"></i>
+                <% end %>
+
+                <%= link_to edit_project_path(project), class: "button" do %>
+                  <i class="fa-solid fa-file-pen"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- Details on the right -->
-        <ul class="list-group list-group-flush mb-3 text-start flex-grow-1">
-          <li class="list-item-show"><strong>Client: </strong><%= @project.client&.company_name %></li>
-          <% if @project.project_date %>
-            <li class="list-item-show"><strong>Start Date: </strong><%= @project.project_date.start_date %></li>
-            <li class="list-item-show"><strong>End Date: </strong><%= @project.project_date.end_date %></li>
-          <% end %>
-          <li class="list-item-show"><strong>Price: </strong> $ <%= @project.price %></li>
-          <li class="list-item-show">
-            <strong>Status: </strong>
-            <span class="badge <%= @project.status ? 'bg-success' : 'bg-warning' %>">
-              <%= @project.status ? 'Paid' : 'Not paid' %>
-            </span>
-          </li>
-        </ul>
       </div>
-      <!-- Move the buttons here, outside the flex row -->
-      <div data-controller="swal-confirm" class="mt-3">
-        <%= link_to project_path(@project), data: { turbo_method: :delete, turbo_confirm: "Are you sure?", swal_text: "This cannot be reverted!" }, class: "button" do %>
-          <i class="fa-solid fa-trash"></i>
-        <% end %>
-        <%= link_to projects_path, class: "button" do %>
-          <i class="fas fa-folder-open"></i>
-        <% end %>
-        <%= link_to client_path(@project.client), class: "button" do %>
-          <i class="fa-regular fa-user"></i>
-        <% end %>
-        <%= link_to edit_project_path(@project), class: "button" do %>
-          <i class="fa-solid fa-file-pen"></i>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
   </div>
+  <button class="carousel-control-prev" type="button"
+          data-bs-target="#projectCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button"
+          data-bs-target="#projectCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>

@@ -4,10 +4,11 @@
 @import "config/bootstrap_variables";
 
 // External libraries
-@import "bootstrap";
 @import "font-awesome";
+@import "custom_bootstrap"; // This is STILL bootstrap, just slightly customized
 
 // Your CSS partials
+
 @import "components/index";
 @import "pages/index";
 

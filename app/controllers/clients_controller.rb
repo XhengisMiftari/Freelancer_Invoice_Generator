@@ -9,6 +9,7 @@ class ClientsController < ApplicationController
 
   def show
     @projects = @client.projects.order(created_at: :desc)
+    @clients = current_user.clients.order(:created_at)
   end
 
   def create

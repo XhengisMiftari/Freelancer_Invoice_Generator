@@ -20,9 +20,9 @@
     <i class="fa-solid fa-file-pen"></i>
     <% end %>
     <%= link_to project_path(project),
-      method: :delete, data: { confirm: "Are you sure?" }, data: { turbo_frame: "_top" },
-      class: "delete" do %>
-    <i class="fa-solid fa-trash"></i>
-    <% end %>
+                            data: { controller: "swal-confirm", turbo_method: :delete, turbo_confirm: 'Are you sure?', swal_text: 'This cannot be reverted!', turbo_frame: "_top" },
+                            class: 'button' do %>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
   </td>
 </tr>
