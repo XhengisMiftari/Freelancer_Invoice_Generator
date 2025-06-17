@@ -2,6 +2,6 @@
   <%= f.input :tax, placeholder: "Taxes *", label: false %>
   <%= f.input :description, placeholder: "Description *", label: false %>
   <%= f.input :project_id, collection: current_user.projects, prompt: "Select Project" %>
-  <%= f.submit "Create & Send Invoice", class: "btn btn-success" %>
-  <%= f.submit "Preview Invoice", formaction:  preview_invoices_path, formmethod:  :get, formtarget:  "_blank", class: "btn btn-secondary" %>
+  <%= f.submit "Create & Send Invoice", class: "ibutton" %>
+  <%= f.submit "Preview Invoice", formaction:  preview_invoices_path, formmethod:  :get, formtarget:  "_blank", class: "ibutton" %>
 <% end %>
