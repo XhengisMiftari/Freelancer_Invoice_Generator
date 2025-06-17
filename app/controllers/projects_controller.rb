@@ -8,6 +8,7 @@ def index
 end
 
   def show
+    @projects = current_user.projects.order(:created_at)
   end
 
   def list

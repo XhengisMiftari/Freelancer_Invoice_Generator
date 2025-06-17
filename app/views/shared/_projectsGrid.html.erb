@@ -42,7 +42,7 @@
     data-project-performance-url="<%= url_for(only_path: true, format: :json) %>">
   <div class="mb-2">
     <button data-action="click->project-performance#previousYear" class="button">← Prev</button>
-    <span id="year-label"><%= Time.current.year %></span>
+    <span class="ibutton" id="year-label"><%= Time.current.year %></span>
     <button data-action="click->project-performance#nextYear" class="button">Next →</button>
   </div>
   <canvas id="projectPerformanceChart" width="1000" height="200"></canvas>
