@@ -3,15 +3,10 @@
 <p>E-Mail: <%= @client.email %></p>
 <p>Telefon: <%= @client.phone_number %></p>
 
-<<<<<<< HEAD
 <%= link_to  client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" do %>
 <i class="fa-solid fa-trash"></i>
 <% end %>
 <%= link_to clients_path, class: "button" do%>
 <i class="fa-solid fa-rotate-left"></i>
 <% end %>
-=======
-<%= link_to "Remove Client", client_path(@client), data: { turbo_confirm: "Are you sure?", swal_text: "This cannot be reverted!!", turbo_method: :delete }, class: "btn btn-warning" %>
-<%= link_to "Back", clients_path %>
 </div>
->>>>>>> master

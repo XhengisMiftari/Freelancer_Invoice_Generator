@@ -5,11 +5,12 @@
   <td>
     <%= link_to client_path(client), data: { turbo_frame: "_top" },
           class: "show" do %>
-          <i class="fa-solid fa-file-pen"></i>
+          <i class="fa-solid fa-eye"></i>
           <% end %>
 
     <%= link_to edit_client_path(client), data: { turbo_frame: "_top" },
           class: "edit" do %>
+          <i class="fa-solid fa-file-pen"></i>
           <% end %>
 
     <%= link_to client_path(client),
