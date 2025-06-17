@@ -1,10 +1,15 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-    <div class="card-show">
+  <div class="card-show">
     <div class="border"></div>
-      <div class="card-header text-center text-black">
-        <h2> Project Details </h2>
-         <ul class="list-group list-group-flush mb-3 text-start">
-          <li class="list-item-show"><strong>Project Name: </strong><%= @project.name %></li>
+    <div class="card-header text-center text-black">
+      <h2><%= @project.name %></h2>
+      <div class="d-flex flex-row align-items-start">
+        <!-- Image on the left -->
+        <div class="me-4">
+          <%= image_tag "projectshow.jpg", alt: "Project Image", class: "img-fluid rounded", style: "width: 180px; height: 250px; object-fit: cover;" %>
+        </div>
+        <!-- Details on the right -->
+        <ul class="list-group list-group-flush mb-3 text-start flex-grow-1">
           <li class="list-item-show"><strong>Client: </strong><%= @project.client&.company_name %></li>
           <% if @project.project_date %>
             <li class="list-item-show"><strong>Start Date: </strong><%= @project.project_date.start_date %></li>
@@ -18,17 +23,18 @@
             </span>
           </li>
         </ul>
-        <div>
-          <%= link_to project_path(@project), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" do %>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-          <%= link_to projects_path, class: "button" do %>
-            <i class="fa-solid fa-rotate-left"></i>
-          <% end %>
-          <%= link_to  edit_project_path(@project), class: "button" do %>
-            <i class="fa-solid fa-file-pen"></i>
-          <% end %>
-        </div>
+      </div>
+      <div>
+        <%= link_to project_path(@project), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
+        <%= link_to projects_path, class: "button" do %>
+          <i class="fa-solid fa-rotate-left"></i>
+        <% end %>
+        <%= link_to edit_project_path(@project), class: "button" do %>
+          <i class="fa-solid fa-file-pen"></i>
+        <% end %>
       </div>
     </div>
   </div>
+</div>

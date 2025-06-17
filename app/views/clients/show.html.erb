@@ -1,31 +1,43 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
   <div class="card-show">
-    <h1><%= @client.first_name %> <%= @client.last_name %></h1>
-    <div data-controller="swal-confirm">
-      <p>E-Mail: <%= @client.email %></p>
-      <p>Telefon: <%= @client.phone_number %></p>
-      <p>Company name: <%= @client.company_name %></p>
-    </div>
-
-    <h3 class="mt-4">Projects</h3>
-    <% if @client.projects.any? %>
-      <ul class="list-group mb-3">
-        <% @client.projects.each do |project| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <%= link_to project.name, project_path(project) %>
-            <span class="badge <%= project.status ? 'bg-success' : 'bg-warning' %>">
-              <%= project.status ? 'Completed' : 'Pending' %>
-            </span>
-          </li>
+    <div class="border"></div>
+    <div class="card-header text-center text-black">
+      <h2><%= @client.company_name%></h2>
+      <div class="d-flex flex-row align-items-start">
+        <!-- Image on the left -->
+        <div class="me-4">
+          <%= image_tag "clientshow.png", alt: "Client Image", class: "img-fluid rounded", style: "width: 180px; height: 240px; object-fit: cover;" %>
+        </div>
+        <!-- Details on the right -->
+        <ul class="list-group list-group-flush mb-3 text-start flex-grow-1">
+          <li class="list-item-show"><strong>Name: </strong><%= @client.first_name %> <%= @client.last_name %></li>
+          <li class="list-item-show"><strong>Email: </strong><%= @client.email %></li>
+          <li class="list-item-show"><strong>Phone: </strong><%= @client.phone_number %></li>
+          <li class="list-item-show"><strong>Company: </strong><%= @client.company_name %></li>
+        </ul>
+      </div>
+      <h3 class="mt-4">Projects</h3>
+      <% if @client.projects.any? %>
+        <ul class="list-group mb-3" style="max-height: 120px; overflow: scroll;">
+          <% @client.projects.each do |project| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= link_to project.name, project_path(project) %>
+              <span class="badge <%= project.status ? 'bg-success' : 'bg-warning' %>">
+                <%= project.status ? 'Completed' : 'Pending' %>
+              </span>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No projects for this client yet.</p>
+      <% end %>
+      <div class= "d-flex align-items-center justify-content-center">
+        <%= link_to  client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" do %>
+        <i class="fa-solid fa-trash"></i>
         <% end %>
-      </ul>
-    <% else %>
-      <p>No projects for this client yet.</p>
-    <% end %>
-    <%= link_to  client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" do %>
-    <i class="fa-solid fa-trash"></i>
-    <% end %>
-    <%= link_to clients_path, class: "button" do%>
-    <i class="fa-solid fa-rotate-left"></i>
-    <% end %>
-</div>
+        <%= link_to clients_path, class: "button" do%>
+        <i class="fa-solid fa-rotate-left"></i>
+        <% end %>
+    </div>
+    </div>
+  </div>

@@ -1,29 +1,32 @@
-<h2>Invoice Details</h2>
-  <%= link_to "Download PDF", invoice_path(@invoice, format: :pdf), class: "btn btn-primary mb-3", target: "_blank" %>
-<p>
-  <strong>Tax amount</strong>
-  <%= @invoice.tax %>
-</p>
-<p>
-  <strong>Description</strong>
-  <%= @invoice.description %>
-</p>
-<div data-controller="swal-confirm">
-<%= link_to "Delete",
-  invoice_path(@invoice),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?", swal_text: "This cannot be reverted!!"}
-%>
-</div>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card-show">
+    <h2>Invoice Details</h2>
+      <%= link_to "Download PDF", invoice_path(@invoice, format: :pdf), class: "btn btn-primary mb-3", target: "_blank" %>
+    <p>
+      <strong>Tax amount</strong>
+      <%= @invoice.tax %>
+    </p>
+    <p>
+      <strong>Description</strong>
+      <%= @invoice.description %>
+    </p>
+    <div data-controller="swal-confirm">
+    <%= link_to "Delete",
+      invoice_path(@invoice),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?", swal_text: "This cannot be reverted!!"}
+    %>
+    </div>
 
 
-<ul>
-    <li><%= @invoice.tax%></li>
-    <li><%= @invoice.description%></li>
-    <li class="list-group-item"><strong>Project Name: </strong><%= @invoice.project.name %></li>
-    <li class="list-group-item"><strong>Client: </strong><%= @invoice.project.client&.company_name %></li>
-    <li class="list-group-item"><strong>Price: </strong><%= @invoice.project.price %></li>
-    <li class="list-group-item"><strong>Start Date: </strong><%=@invoice.project.project_date.start_date %></li>
-    <li class="list-group-item"><strong>End Date: </strong><%= @invoice.project.project_date.end_date %></li>
-</ul>
-<%= link_to "Back", invoices_path %>
+    <ul>
+        <li><%= @invoice.tax%></li>
+        <li><%= @invoice.description%></li>
+        <li class="list-group-item"><strong>Project Name: </strong><%= @invoice.project.name %></li>
+        <li class="list-group-item"><strong>Client: </strong><%= @invoice.project.client&.company_name %></li>
+        <li class="list-group-item"><strong>Price: </strong><%= @invoice.project.price %></li>
+        <li class="list-group-item"><strong>Start Date: </strong><%=@invoice.project.project_date.start_date %></li>
+        <li class="list-group-item"><strong>End Date: </strong><%= @invoice.project.project_date.end_date %></li>
+    </ul>
+    <%= link_to "Back", invoices_path %>
+  </div>
 </div>
