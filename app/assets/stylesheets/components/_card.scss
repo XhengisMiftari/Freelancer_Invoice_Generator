@@ -5,7 +5,7 @@
 .card-show {
   width: 400px;
   height: 600px;
-  background: #616385d6;
+  background: #B8CFCE;
   position: relative;
   display: grid;
   place-content: center;
@@ -129,6 +129,7 @@ ul {
 .card-show:hover {
   border-radius: 10px;
   transform: scale(1.1);
+  background-color: #7F8CAA;
 }
 
 .card-show:hover .border {

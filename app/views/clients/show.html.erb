@@ -1,8 +1,28 @@
-<h1><%= @client.first_name %> <%= @client.last_name %></h1>
-<div data-controller="swal-confirm">
-<p>E-Mail: <%= @client.email %></p>
-<p>Telefon: <%= @client.phone_number %></p>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card-show">
+    <h1><%= @client.first_name %> <%= @client.last_name %></h1>
+    <div data-controller="swal-confirm">
+      <p>E-Mail: <%= @client.email %></p>
+      <p>Telefon: <%= @client.phone_number %></p>
+      <p>Company name: <%= @client.company_name %></p>
+    </div>
 
-<%= link_to "Remove Client", client_path(@client), data: { turbo_confirm: "Are you sure?", swal_text: "This cannot be reverted!!", turbo_method: :delete }, class: "btn btn-warning" %>
-<%= link_to "Back", clients_path %>
-</div>
+    <h3 class="mt-4">Projects</h3>
+    <% if @client.projects.any? %>
+      <ul class="list-group mb-3">
+        <% @client.projects.each do |project| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= link_to project.name, project_path(project) %>
+            <span class="badge <%= project.status ? 'bg-success' : 'bg-warning' %>">
+              <%= project.status ? 'Completed' : 'Pending' %>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No projects for this client yet.</p>
+    <% end %>
+
+    <%= link_to "Remove Client", client_path(@client), data: { turbo_confirm: "Are you sure?", swal_text: "This cannot be reverted!!", turbo_method: :delete }, class: "btn btn-warning" %>
+    <%= link_to "Back", clients_path, class: "btn btn-secondary" %>
+  </div>
