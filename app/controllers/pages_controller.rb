@@ -12,6 +12,7 @@ class PagesController < ApplicationController
     @invoices_count = current_user.invoices.count
     @clients_count  = current_user.clients.count
     @projects_count = current_user.projects.count
+    @balance = current_user.balance
   end
 
   def index
