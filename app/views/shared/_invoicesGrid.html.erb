@@ -1,5 +1,17 @@
 
 <div class="container mt-4">
+<div data-controller="invoice-performance"
+     data-invoice-performance-current-year="<%= Time.current.year %>"
+     data-invoice-performance-url="<%= invoices_path(format: :json) %>">
+
+  <div class="mb-2">
+    <button data-action="click->invoice-performance#previousYear">← Prev</button>
+    <span id="year-label"><%= Time.current.year %></span>
+    <button data-action="click->invoice-performance#nextYear">Next →</button>
+  </div>
+
+  <canvas id="invoicePerformanceChart" width="400" height="200"></canvas>
+</div>
   <div class=" justify-content-center">
     <div class="col-sm-8 my-3">
     <%= form_with url: root_path, method: :get, class: "d-flex" do %>
