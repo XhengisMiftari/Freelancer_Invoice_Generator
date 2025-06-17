@@ -18,8 +18,8 @@
             </span>
           </li>
         </ul>
-        <div>
-          <%= link_to project_path(@project), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" do %>
+        <div data-controller="swal-confirm">
+          <%= link_to project_path(@project), data: { turbo_method: :delete, turbo_confirm: "Are you sure?", swal_text: "This cannot be reverted!" }, class: "button" do %>
             <i class="fa-solid fa-trash"></i>
           <% end %>
           <%= link_to projects_path, class: "button" do %>
