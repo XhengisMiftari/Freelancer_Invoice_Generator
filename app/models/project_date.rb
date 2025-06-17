@@ -8,5 +8,4 @@ class ProjectDate < ApplicationRecord
   def end_time
     end_date
   end
-
 end
