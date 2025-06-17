@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_16_133124) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_17_074821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_16_133124) do
     t.datetime "updated_at", null: false
     t.boolean "status"
     t.decimal "performance_amount", precision: 10, scale: 2
+    t.integer "price_cents", default: 0, null: false
     t.index ["project_id"], name: "index_invoices_on_project_id"
   end
 
