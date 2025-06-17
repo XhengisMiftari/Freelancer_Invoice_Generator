@@ -26,25 +26,32 @@ export default class extends Controller {
       el.dataset.turboConfirm || el.dataset.confirm || "Are you sure?"
 
     const body = el.dataset.swalText      // optional second line
-    const icon = el.dataset.swalIcon || "warning"
+    // const icon = el.dataset.swalIcon || "info"
     const okLabel = el.dataset.swalConfirmText || "Yes"
     const cancel  = el.dataset.swalCancelText  || "Cancel"
+    const customImg = document.querySelector('meta[name="swal-logo"]').content;
 
       // Show modal and wait
     const { isConfirmed } = await Swal.fire({
       title: message,
       text: body,
-      icon,
+      // icon,
+      imageUrl: customImg,
+      imageWidth: 180,
+      imageHeight: 180,
       showCancelButton: true,
       confirmButtonText: okLabel,
+      confirmButtonColor: '#5FA8A4',
       cancelButtonText: cancel,
+      cancelButtonColor: '#B8CFCE',
       reverseButtons: true,
       focusCancel: true,
+      background: '#EAEFEF'
     })
 
     if (!isConfirmed) return   // user clicked “Cancel”
 
-     // Remove the attribute(s) to avoid an infinite loop
+     // Remove the attribute to avoid an infinite loop
     el.removeAttribute("data-confirm")
     el.removeAttribute("data-turbo-confirm")
 

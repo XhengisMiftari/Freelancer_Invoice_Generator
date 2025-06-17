@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     @invoices = current_user.invoices.includes(project: :client)
   end
 
- def invoices
+def invoices
   @invoices = current_user.invoices.includes(project: :client)
   year = params[:year]&.to_i || Time.current.year
 
@@ -38,8 +38,8 @@ class PagesController < ApplicationController
       @chart_values = monthly_totals.values
 
       render partial: "shared/invoicesGrid",
-             locals: { invoices: @invoices, chart_labels: @chart_labels, chart_values: @chart_values },
-             layout: "dash_frame"
+            locals: { invoices: @invoices, chart_labels: @chart_labels, chart_values: @chart_values },
+            layout: "dash_frame"
     end
 
     format.json do
@@ -85,7 +85,7 @@ end
       end
     end
 
- def projects
+def projects
   @projects = current_user.projects.includes(:client, :project_date)
   year = params[:year]&.to_i || Time.current.year
 
@@ -105,8 +105,8 @@ end
       @chart_values = monthly_totals.values
 
       render partial: "shared/projectsGrid",
-             locals: { projects: @projects, chart_labels: @chart_labels, chart_values: @chart_values },
-             layout: "dash_frame"
+            locals: { projects: @projects, chart_labels: @chart_labels, chart_values: @chart_values },
+            layout: "dash_frame"
     end
 
     format.json do

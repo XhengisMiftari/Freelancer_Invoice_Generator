@@ -1,56 +1,54 @@
+<div class=" justify-content-center">
+  <div class="col-sm-8 my-3">
+  <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+          params[:query],
+          class: "input",
+          placeholder: "Type a keyword"%>
+    <%= submit_tag "search", name: "", class: "button"%>
+  <% end %>
+  </div>
+</div>
+<h2>Invoices</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Status</th>
+      <th>Invoice</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @invoices.each do |invoice| %>
+    <tr>
+      <td> <%= link_to project_path(invoice.project), data: { turbo_frame: "_top" } do %>
+        <%= invoice.project.name %>
+        <% end %>
+      </td>
+      <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+      <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+      <td><%= invoice.status ? "Paid" : "Unpaid" %></td>
+      <td>
+        <%= link_to invoice_path(invoice), data: { turbo_frame: "_top" } do %>
+          <%= image_tag("invoice.png", alt: "Invoice", width: 32, height: 32) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
 
-<div class="container mt-4">
+  </tbody>
+</table>
 <div data-controller="invoice-performance"
-     data-invoice-performance-current-year="<%= Time.current.year %>"
-     data-invoice-performance-url="<%= invoices_path(format: :json) %>">
+  data-invoice-performance-current-year="<%= Time.current.year %>"
+  data-invoice-performance-url="<%= invoices_path(format: :json) %>">
 
   <div class="mb-2">
-    <button data-action="click->invoice-performance#previousYear">← Prev</button>
+    <button data-action="click->invoice-performance#previousYear" class="button">← Prev</button>
     <span id="year-label"><%= Time.current.year %></span>
-    <button data-action="click->invoice-performance#nextYear">Next →</button>
+    <button data-action="click->invoice-performance#nextYear" class="button">Next →</button>
   </div>
 
-  <canvas id="invoicePerformanceChart" width="400" height="200"></canvas>
-</div>
-  <div class=" justify-content-center">
-    <div class="col-sm-8 my-3">
-    <%= form_with url: root_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "input",
-            placeholder: "Type a keyword"%>
-      <%= submit_tag "search", name: "", class: "button"%>
-    <% end %>
-    </div>
-  </div>
-  <h2>Invoices</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Full Name</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Status</th>
-        <th>Invoice</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @invoices.each do |invoice| %>
-      <tr>
-        <td> <%= link_to project_path(invoice.project), data: { turbo_frame: "_top" } do %>
-          <%= invoice.project.name %>
-          <% end %>
-        </td>
-        <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
-        <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
-        <td><%= invoice.status ? "Paid" : "Unpaid" %></td>
-        <td>
-          <%= link_to invoice_path(invoice), data: { turbo_frame: "_top" } do %>
-            <%= image_tag("invoice.png", alt: "Invoice", width: 32, height: 32) %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+<canvas id="invoicePerformanceChart" width="1000" height="200"></canvas>
 </div>

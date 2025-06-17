@@ -1,17 +1,15 @@
-<h2>Projects</h2>
-<div data-controller="project-performance"
-     data-project-performance-current-year="<%= Time.current.year %>"
-     data-project-performance-url="<%= url_for(only_path: true, format: :json) %>">
-
-  <div class="mb-2">
-    <button data-action="click->project-performance#previousYear">← Prev</button>
-    <span id="year-label"><%= Time.current.year %></span>
-    <button data-action="click->project-performance#nextYear">Next →</button>
+<div class=" justify-content-center">
+  <div class="col-sm-8 my-3">
+  <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+          params[:query],
+          class: "input",
+          placeholder: "Type a keyword"%>
+    <%= submit_tag "search", name: "", class: "button"%>
+  <% end %>
   </div>
-
-  <canvas id="projectPerformanceChart" width="400" height="200"></canvas>
 </div>
-
+<h2>Projects</h2>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -39,3 +37,13 @@
     <% end %>
   </tbody>
 </table>
+<div data-controller="project-performance"
+    data-project-performance-current-year="<%= Time.current.year %>"
+    data-project-performance-url="<%= url_for(only_path: true, format: :json) %>">
+  <div class="mb-2">
+    <button data-action="click->project-performance#previousYear" class="button">← Prev</button>
+    <span id="year-label"><%= Time.current.year %></span>
+    <button data-action="click->project-performance#nextYear" class="button">Next →</button>
+  </div>
+  <canvas id="projectPerformanceChart" width="1000" height="200"></canvas>
+</div>
