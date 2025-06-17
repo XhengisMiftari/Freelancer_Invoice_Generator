@@ -1,34 +1,64 @@
-<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-    <div class="card-show">
-    <div class="border"></div>
-      <div class="card-header text-center text-white">
-        <h2> Project Details </h2>
-         <ul class="list-group list-group-flush mb-3 text-start">
-          <li class="list-item-show"><strong>Project Name: </strong><%= @project.name %></li>
-          <li class="list-item-show"><strong>Client: </strong><%= @project.client&.company_name %></li>
-          <% if @project.project_date %>
-            <li class="list-item-show"><strong>Start Date: </strong><%= @project.project_date.start_date %></li>
-            <li class="list-item-show"><strong>End Date: </strong><%= @project.project_date.end_date %></li>
-          <% end %>
-          <li class="list-item-show"><strong>Price: </strong> $ <%= @project.price %></li>
-          <li class="list-item-show">
-            <strong>Status: </strong>
-            <span class="badge <%= @project.status ? 'bg-success' : 'bg-warning' %>">
-              <%= @project.status ? 'Paid' : 'Not paid' %>
-            </span>
-          </li>
-        </ul>
-        <div data-controller="swal-confirm">
-          <%= link_to project_path(@project), data: { turbo_method: :delete, turbo_confirm: "Are you sure?", swal_text: "This cannot be reverted!" }, class: "button" do %>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-          <%= link_to projects_path, class: "button" do %>
-            <i class="fa-solid fa-rotate-left"></i>
-          <% end %>
-          <%= link_to  edit_project_path(@project), class: "button" do %>
-            <i class="fa-solid fa-file-pen"></i>
-          <% end %>
+<div id="projectCarousel" class="carousel slide" data-bs-touch="true">
+  <div class="carousel-inner">
+    <% @projects.each do |project| %>
+      <div class="carousel-item <%= 'active' if project == @project %>">
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+          <div class="card-show">
+            <div class="border"></div>
+
+            <div class="card-header text-center text-white">
+              <h2>Project Details</h2>
+
+              <ul class="list-group list-group-flush mb-3 text-start">
+                <li class="list-item-show"><strong>Project Name:</strong> <%= project.name %></li>
+                <li class="list-item-show"><strong>Client:</strong> <%= project.client&.company_name %></li>
+
+                <% if project.project_date %>
+                  <li class="list-item-show"><strong>Start Date:</strong> <%= project.project_date.start_date %></li>
+                  <li class="list-item-show"><strong>End Date:</strong>   <%= project.project_date.end_date %></li>
+                <% end %>
+
+                <li class="list-item-show"><strong>Price:</strong> $<%= project.price %></li>
+                <li class="list-item-show">
+                  <strong>Status:</strong>
+                  <span class="badge <%= project.status ? 'bg-success' : 'bg-warning' %>">
+                    <%= project.status ? 'Paid' : 'Not paid' %>
+                  </span>
+                </li>
+              </ul>
+
+              <div data-controller="swal-confirm">
+                <%= link_to project_path(project),
+                            data: { turbo_method: :delete,
+                                    turbo_confirm: 'Are you sure?',
+                                    swal_text: 'This cannot be reverted!' },
+                            class: 'button' do %>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
+
+                <%= link_to projects_path, class: 'button' do %>
+                  <i class="fa-solid fa-rotate-left"></i>
+                <% end %>
+
+                <%= link_to edit_project_path(project), class: 'button' do %>
+                  <i class="fa-solid fa-file-pen"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
+
   </div>
+  <button class="carousel-control-prev" type="button"
+          data-bs-target="#projectCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button"
+          data-bs-target="#projectCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
