@@ -17,6 +17,7 @@ end
 
   def create
     @project = Project.new(project_params)
+    @project.price = @project.price * 100
     # @project.user = current_user
     if @project.save
       render partial: "projects/new_project_frame", locals: { project: Project.new }, layout: false, status: :created
