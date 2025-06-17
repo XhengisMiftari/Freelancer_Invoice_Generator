@@ -3,17 +3,9 @@
     <div class="border"></div>
       <h2>Invoice Details</h2>
         <%= link_to "Download PDF", invoice_path(@invoice, format: :pdf), class: "ibutton", target: "_blank" %>
-      <p>
-        <strong>Tax amount</strong>
-        <%= @invoice.tax %>
-      </p>
-      <p>
-        <strong>Description</strong>
-        <%= @invoice.description %>
-      </p>
         <ul>
-          <li><%= @invoice.tax%></li>
-          <li><%= @invoice.description%></li>
+          <li class="list-group-item"><strong>Tax amount: </strong><%= @invoice.tax%> %</li>
+          <li class="list-group-item"><strong>Description: </strong><%= @invoice.description%></li>
           <li class="list-group-item"><strong>Project Name: </strong><%= @invoice.project.name %></li>
           <li class="list-group-item"><strong>Client: </strong><%= @invoice.project.client&.company_name %></li>
           <li class="list-group-item"><strong>Price: </strong><%= @invoice.project.price %></li>
