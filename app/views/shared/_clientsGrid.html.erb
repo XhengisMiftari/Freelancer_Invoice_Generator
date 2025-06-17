@@ -1,4 +1,19 @@
 <h2>Clients</h2>
+<div data-controller="client-performance"
+     data-client-performance-current-year="<%= Time.current.year %>"
+     data-client-performance-url="<%= url_for(only_path: true, format: :json) %>">
+
+  <div class="mb-2">
+    <button data-action="click->client-performance#previousYear">← Prev</button>
+    <span id="year-label"><%= Time.current.year %></span>
+    <button data-action="click->client-performance#nextYear">Next →</button>
+  </div>
+
+  <canvas id="clientPerformanceChart" width="400" height="200"></canvas>
+</div>
+
+  <canvas id="clientPerformanceChart" width="400" height="200"></canvas>
+</div>
 <table class="table table-striped">
   <thead>
     <tr>
