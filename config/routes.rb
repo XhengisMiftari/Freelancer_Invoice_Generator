@@ -29,4 +29,6 @@ Rails.application.routes.draw do
       post :create_checkout_session
     end
   end
+
+  post '/stripe/webhook', to: 'stripe_webhooks#receive'
 end
