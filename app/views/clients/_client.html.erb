@@ -1,6 +1,6 @@
-<tr id="<%= dom_id(client) %>">
-  <td>
-    <%= link_to client_path(client), data: { turbo_frame: "_top" }, class: "button" do %>
+<tr class="shadow", id="<%= dom_id(client) %>">
+  <td >
+    <%= link_to client_path(client), data: { turbo_frame: "_top" }, class: "button " do %>
     <%= client.company_name %>
     <% end %>
   </td>
