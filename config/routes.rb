@@ -25,5 +25,8 @@ Rails.application.routes.draw do
       get :list
       get :new_frame
     end
+    member do
+      post :create_checkout_session
+    end
   end
 end
