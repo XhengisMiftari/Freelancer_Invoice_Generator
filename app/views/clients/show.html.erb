@@ -1,43 +1,83 @@
-<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-  <div class="card-show">
-    <div class="border"></div>
-    <div class="card-header text-center text-black">
-      <h2><%= @client.company_name%></h2>
-      <div class="d-flex flex-row align-items-start">
-        <!-- Image on the left -->
-        <div class="me-4">
-          <%= image_tag "clientshow.png", alt: "Client Image", class: "img-fluid rounded", style: "width: 180px; height: 240px; object-fit: cover;" %>
-        </div>
-        <!-- Details on the right -->
-        <ul class="list-group list-group-flush mb-3 text-start flex-grow-1">
-          <li class="list-item-show"><strong>Name: </strong><%= @client.first_name %> <%= @client.last_name %></li>
-          <li class="list-item-show"><strong>Email: </strong><%= @client.email %></li>
-          <li class="list-item-show"><strong>Phone: </strong><%= @client.phone_number %></li>
-          <li class="list-item-show"><strong>Company: </strong><%= @client.company_name %></li>
-        </ul>
-      </div>
-      <h3 class="mt-4">Projects</h3>
-      <% if @client.projects.any? %>
-        <ul class="list-group mb-3" style="max-height: 120px; overflow: scroll;">
-          <% @client.projects.each do |project| %>
-            <li id="card" class="list-group-item d-flex justify-content-between align-items-center">
-              <%= link_to project.name, project_path(project) %>
-              <span class="badge <%= project.status ? 'bg-success' : 'bg-warning' %>">
-                <%= project.status ? 'Completed' : 'Pending' %>
-              </span>
-            </li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>No projects for this client yet.</p>
-      <% end %>
-      <div data-controller="swal-confirm" class= "d-flex align-items-center justify-content-center">
-      <%= link_to  client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this client?", swal_text: "This cannot be reverted!" }, class: "button" do %>
-        <i class="fa-solid fa-trash"></i>
-      <% end %>
-      <%= link_to clients_path, class: "button" do%>
-          <i class="fa-solid fa-rotate-left"></i>
-      <% end %>
-    </div>
-    </div>
-  </div>
+<div id="clientCarousel" class="carousel slide" data-bs-touch="true">
+  <div class="carousel-inner">
+    <% @clients.each do |client| %>
+      <div class="carousel-item <%= 'active' if client == @client %>">
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+          <div class="card-show">
+            <div class="border"></div>
+
+            <!-- Header -->
+            <div class="card-header text-center text-black">
+              <h2><%= client.company_name %></h2>
+
+              <!-- Image + basic info -->
+              <div class="d-flex flex-row align-items-start">
+                <div class="me-4">
+                  <%= image_tag "clientshow.png",
+                                alt: "Client Image",
+                                class: "img-fluid rounded",
+                                style: "width: 180px; height: 240px; object-fit: cover;" %>
+                </div>
+
+                <ul class="list-group list-group-flush mb-3 text-start flex-grow-1">
+                  <li class="list-item-show"><strong>Name:</strong> <%= client.first_name %> <%= client.last_name %></li>
+                  <li class="list-item-show"><strong>Email:</strong> <%= client.email %></li>
+                  <li class="list-item-show"><strong>Phone:</strong> <%= client.phone_number %></li>
+                  <li class="list-item-show"><strong>Company:</strong> <%= client.company_name %></li>
+                </ul>
+              </div> <!-- /.d-flex -->
+
+              <!-- Client’s projects -->
+              <h3 class="mt-4">Projects</h3>
+              <% if client.projects.any? %>
+                <ul class="list-group mb-3" style="max-height: 120px; overflow: auto;">
+                  <% client.projects.each do |project| %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <%= link_to project.name, project_path(project) %>
+                      <span class="badge <%= project.status ? 'bg-success' : 'bg-warning' %>">
+                        <%= project.status ? 'Completed' : 'Pending' %>
+                      </span>
+                    </li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <p>No projects for this client yet.</p>
+              <% end %>
+
+              <!-- Action buttons -->
+              <div data-controller="swal-confirm" class="d-flex align-items-center justify-content-center gap-2">
+                <%= link_to client_path(client),
+                            data: {
+                              turbo_method: :delete,
+                              turbo_confirm: "Are you sure you want to remove this client?",
+                              swal_text:     "This cannot be reverted!",
+                              turbo_frame:   "_top"       # leave the Turbo frame
+                            },
+                            class: "button" do %>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
+
+                <%= link_to clients_path, class: "button" do %>
+                  <i class="fa-solid fa-rotate-left"></i>
+                <% end %>
+              </div> <!-- /.swal-confirm -->
+            </div>   <!-- /.card-header -->
+          </div>     <!-- /.card-show -->
+        </div>       <!-- /.d-flex -->
+      </div>         <!-- /.carousel-item -->
+    <% end %>
+  </div>             <!-- /.carousel-inner -->
+
+  <!-- Carousel controls -->
+  <button class="carousel-control-prev" type="button"
+          data-bs-target="#clientCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button class="carousel-control-next" type="button"
+          data-bs-target="#clientCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
