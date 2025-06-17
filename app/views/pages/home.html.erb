@@ -4,7 +4,7 @@
     <%= link_to dashboard_invoices_path,  # points to the linked route in routes
                 data:  { turbo_frame: "dash_grid", action: "dash#activate" },   # when clicked, only this frame is refreshed with
                 class: "card shadow-sm flex-fill text-decoration-none",         # the matching route and attr of "dash_grid"
-                style: "min-width: 200px;" do %>
+                style: "min-width: 200px; border-radius: 10px;" do %>
       <div class="card-body">
         <h5 class="card-title text-muted">Total Invoices</h5>
         <h1><%= @invoices_count %></h1>
@@ -14,7 +14,7 @@
     <%= link_to dashboard_clients_path,   # points to the linked route in routes
                 data:  { turbo_frame: "dash_grid", action: "dash#activate" },   # when clicked, only this frame is refreshed with
                 class: "card shadow-sm flex-fill text-decoration-none",         # the matching route and attr of "dash_grid"
-                style: "min-width: 200px;" do %>
+                style: "min-width: 200px; border-radius: 10px;" do %>
       <div class="card-body">
         <h5 class="card-title text-muted">Total Clients</h5>
         <h1><%= @clients_count %></h1>
@@ -24,7 +24,7 @@
     <%= link_to dashboard_projects_path,  # points to the linked route in routes
                 data:  { turbo_frame: "dash_grid", action: "dash#activate" },   # when clicked, only this frame is refreshed with
                 class: "card shadow-sm flex-fill text-decoration-none",         # the matching route and attr of "dash_grid"
-                style: "min-width: 200px;" do %>
+                style: "min-width: 200px; border-radius: 10px;" do %>
       <div class="card-body">
         <h5 class="card-title text-muted">Total Projects</h5>
         <h1><%= @projects_count %></h1>

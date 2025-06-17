@@ -1,2 +1,4 @@
 <%= render "shared/projectsForm", project: @project %>
-<%= link_to "Back", projects_path %>
+<%= link_to  projects_path, class: "button" do %>
+<i class="fa-solid fa-rotate-left"></i>
+<% end %>
