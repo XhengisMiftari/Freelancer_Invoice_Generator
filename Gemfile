@@ -36,12 +36,17 @@ gem "simple_calendar", "~> 2.4"
 # devise
 gem "devise"
 
+#chart generation
+gem 'chartkick'
 
 gem 'omniauth-google-oauth2'
 gem 'google-apis-gmail_v1'
 
 #cloudinary
 gem "cloudinary"
+
+#gem "groupdate"
+gem "groupdate"
 
 gem 'dotenv-rails', groups: [:development, :test]
 

@@ -42,3 +42,15 @@
     </div>
   </div>
 </div>
+<div data-controller="invoice-performance"
+     data-invoice-performance-current-year="<%= Time.current.year %>"
+     data-invoice-performance-url="<%= invoices_path(format: :json) %>">
+
+  <div class="mb-2">
+    <button data-action="click->invoice-performance#previousYear">← Prev</button>
+    <span id="year-label"><%= Time.current.year %></span>
+    <button data-action="click->invoice-performance#nextYear">Next →</button>
+  </div>
+
+  <canvas id="invoicePerformanceChart" width="400" height="200"></canvas>
+</div>
