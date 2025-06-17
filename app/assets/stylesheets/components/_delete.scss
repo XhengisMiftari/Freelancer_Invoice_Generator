@@ -26,33 +26,33 @@
   word-wrap: break-word;
 }
 
-.button:hover {
+.delete:hover {
   background-color: #7F8CAA;
   text-decoration: none;
   transition-duration: 0.1s;
 }
 
-.button:disabled {
+.delete:disabled {
   background-color: #EAEFEF;
   border-color: rgba(27, 31, 35, 0.15);
   color: #959da5;
   cursor: default;
 }
 
-.button:active {
+.delete:active {
   background-color: #edeff2;
   box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
   transition: none 0s;
 }
 
-.button:focus {
+.delete:focus {
   outline: 1px transparent;
 }
 
-.button:before {
+.delete:before {
   display: none;
 }
 
-.button:-webkit-details-marker {
+.delete:-webkit-details-marker {
   display: none;
 }

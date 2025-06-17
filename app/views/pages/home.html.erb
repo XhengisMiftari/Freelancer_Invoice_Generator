@@ -30,6 +30,10 @@
         <h1><%= @projects_count %></h1>
       </div>
     <% end %>
+    <div class="card-body card shadow-sm flex-fill">
+        <h5 class="card-title text-muted">Total Balance</h5>
+        <h1>500.000€</h1>
+    </div>
   </div>
   <turbo-frame id="dash_grid" class="mt-4">
     <%= render "shared/invoicesGrid", invoices: @invoices %>

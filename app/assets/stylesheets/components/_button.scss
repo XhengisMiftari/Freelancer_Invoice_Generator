@@ -29,7 +29,7 @@
 
 
 .button:hover {
-  background-color: #7F8CAA;
+  background-color: #D35D6E;
   text-decoration: none;
   transition-duration: 0.1s;
 }
@@ -37,7 +37,7 @@
 .button:disabled {
   background-color: #EAEFEF;
   border-color: rgba(27, 31, 35, 0.15);
-  color: #959da5;
+  color: #D35D6E;
   cursor: default;
 }
 
