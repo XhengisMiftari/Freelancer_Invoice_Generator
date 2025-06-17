@@ -31,13 +31,13 @@
       <% else %>
         <p>No projects for this client yet.</p>
       <% end %>
-      <div class= "d-flex align-items-center justify-content-center">
-        <%= link_to  client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button" do %>
+      <div data-controller="swal-confirm" class= "d-flex align-items-center justify-content-center">
+      <%= link_to  client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this client?", swal_text: "This cannot be reverted!" }, class: "button" do %>
         <i class="fa-solid fa-trash"></i>
-        <% end %>
-        <%= link_to clients_path, class: "button" do%>
-        <i class="fa-solid fa-rotate-left"></i>
-        <% end %>
+      <% end %>
+      <%= link_to clients_path, class: "button" do%>
+          <i class="fa-solid fa-rotate-left"></i>
+      <% end %>
     </div>
     </div>
   </div>
