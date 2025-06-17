@@ -23,6 +23,8 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
+
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -39,11 +41,21 @@ gem "devise"
 #
 gem 'money-rails'
 
+
+#chart generation
+gem 'chartkick'
+
 gem 'omniauth-google-oauth2'
 gem 'google-apis-gmail_v1'
 
+
+gem 'stripe'
+
 #cloudinary
 gem "cloudinary"
+
+#gem "groupdate"
+gem "groupdate"
 
 gem 'dotenv-rails', groups: [:development, :test]
 
