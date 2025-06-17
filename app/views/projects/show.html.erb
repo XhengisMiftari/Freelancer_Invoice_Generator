@@ -23,17 +23,21 @@
             </span>
           </li>
         </ul>
-        <div data-controller="swal-confirm">
-          <%= link_to project_path(@project), data: { turbo_method: :delete, turbo_confirm: "Are you sure?", swal_text: "This cannot be reverted!" }, class: "button" do %>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-          <%= link_to projects_path, class: "button" do %>
-            <i class="fa-solid fa-rotate-left"></i>
-          <% end %>
-          <%= link_to  edit_project_path(@project), class: "button" do %>
-            <i class="fa-solid fa-file-pen"></i>
-          <% end %>
-        </div>
+      </div>
+      <!-- Move the buttons here, outside the flex row -->
+      <div data-controller="swal-confirm" class="mt-3">
+        <%= link_to project_path(@project), data: { turbo_method: :delete, turbo_confirm: "Are you sure?", swal_text: "This cannot be reverted!" }, class: "button" do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
+        <%= link_to projects_path, class: "button" do %>
+          <i class="fas fa-folder-open"></i>
+        <% end %>
+        <%= link_to client_path(@project.client), class: "button" do %>
+          <i class="fa-regular fa-user"></i>
+        <% end %>
+        <%= link_to edit_project_path(@project), class: "button" do %>
+          <i class="fa-solid fa-file-pen"></i>
+        <% end %>
       </div>
     </div>
   </div>
