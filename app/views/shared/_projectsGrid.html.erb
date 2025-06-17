@@ -1,4 +1,16 @@
 <h2>Projects</h2>
+<div data-controller="project-performance"
+     data-project-performance-current-year="<%= Time.current.year %>"
+     data-project-performance-url="<%= url_for(only_path: true, format: :json) %>">
+
+  <div class="mb-2">
+    <button data-action="click->project-performance#previousYear">← Prev</button>
+    <span id="year-label"><%= Time.current.year %></span>
+    <button data-action="click->project-performance#nextYear">Next →</button>
+  </div>
+
+  <canvas id="projectPerformanceChart" width="400" height="200"></canvas>
+</div>
 
 <table class="table table-striped">
   <thead>

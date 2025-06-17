@@ -36,6 +36,8 @@ gem "simple_calendar", "~> 2.4"
 # devise
 gem "devise"
 
+#chart generation
+gem 'chartkick'
 
 gem 'omniauth-google-oauth2'
 gem 'google-apis-gmail_v1'

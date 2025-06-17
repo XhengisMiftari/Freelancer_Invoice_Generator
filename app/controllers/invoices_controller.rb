@@ -4,23 +4,34 @@ class InvoicesController < ApplicationController
     @invoices = current_user.invoices
     @invoice = Invoice.new
 
-    #testing some chart.js
-   full_year_months = Date::MONTHNAMES.compact # ["January", ..., "December"]
-   @monthly_totals = full_year_months.index_with(0)
+     year = params[:year]&.to_i || Time.current.year
 
-    # Step 2: Actual invoice counts per month
-  actual_data = current_user.invoices
-    .where(created_at: Time.current.beginning_of_year..Time.current.end_of_year)
-    .group_by_month(:created_at, format: "%B", time_zone: "Europe/Berlin")
-    .count
+      # Build full 12 months list
+      months = Date::MONTHNAMES.compact
+      monthly_totals = months.index_with(0)
 
-  # Step 3: Merge actual data into default list
-    @monthly_totals.merge!(actual_data)
+    actual_data = current_user.invoices
+      .where(created_at: Date.new(year).beginning_of_year..Date.new(year).end_of_year)
+      .group_by_month(:created_at, format: "%B", time_zone: "Europe/Berlin")
+      .count
 
-  # Step 4: Send to view
-    @chart_labels = @monthly_totals.keys
-    @chart_values = @monthly_totals.values
+    monthly_totals.merge!(actual_data)
+
+    respond_to do |format|
+      format.html do
+        @chart_labels = monthly_totals.keys
+        @chart_values = monthly_totals.values
+    end
+
+    format.json do
+      render json: {
+        year: year,
+        labels: monthly_totals.keys,
+        values: monthly_totals.values
+      }
+    end
   end
+end
 
   def preview
     # Example: render the latest invoice as a PDF preview

@@ -8,3 +8,6 @@ pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 pin "sweetalert2" # @11.22.0
 pin "@kurkle/color", to: "@kurkle--color.js" # @0.3.4
+pin "chart.js" # @4.5.0
+pin "chartkick", to: "chartkick.js"
+pin "Chart.bundle", to: "Chart.bundle.js"

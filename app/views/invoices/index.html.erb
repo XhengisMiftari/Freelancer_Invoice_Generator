@@ -42,15 +42,15 @@
       </div>
   </div>
 </div>
-<pre>
-Chart Labels: <%= @chart_labels.inspect %>
-Chart Values: <%= @chart_values.inspect %>
-</pre>
-<canvas
-  id="invoicePerformanceChart"
-  data-controller="invoice-performance"
-  data-invoice-performance-labels='<%= raw @chart_labels.to_json %>'
-  data-invoice-performance-values='<%= raw @chart_values.to_json %>'
-  width="400"
-  height="200">
-</canvas>
+<div data-controller="invoice-performance"
+     data-invoice-performance-current-year="<%= Time.current.year %>"
+     data-invoice-performance-url="<%= invoices_path(format: :json) %>">
+
+  <div class="mb-2">
+    <button data-action="click->invoice-performance#previousYear">← Prev</button>
+    <span id="year-label"><%= Time.current.year %></span>
+    <button data-action="click->invoice-performance#nextYear">Next →</button>
+  </div>
+
+  <canvas id="invoicePerformanceChart" width="400" height="200"></canvas>
+</div>
