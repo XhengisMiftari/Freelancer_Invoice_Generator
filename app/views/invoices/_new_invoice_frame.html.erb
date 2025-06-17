@@ -2,7 +2,7 @@
   <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
     <%= render "shared/invoicesForm", invoice: @invoice %>
     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-      <%= button_to "Preview Invoice", preview_invoices_path, method: :get, form: {target: "_blank"}, class: "btn btn-secondary" %>
+      <%= button_to "Preview Invoice", preview_invoices_path, method: :get, form: {target: "_blank"}, class: "create" %>
     </div>
   </div>
 </turbo-frame>
