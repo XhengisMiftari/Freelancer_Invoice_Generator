@@ -37,7 +37,7 @@ gem "simple_calendar", "~> 2.4"
 
 # devise
 gem "devise"
-
+gem 'stripe'
 #
 gem 'money-rails'
 
