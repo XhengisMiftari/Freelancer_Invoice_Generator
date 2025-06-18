@@ -73,3 +73,13 @@ body {
     cursor: not-allowed;
   }
 }
+
+.bg-warning {
+  background-color: rgba(189, 111, 43, 0.71) !important;
+  color: rgba(245, 245, 245, 0.849);
+}
+
+.bg-success {
+  background-color: rgba(65, 189, 134, 0.72) !important;
+  color: rgba(245, 245, 245, 0.849);
+}
