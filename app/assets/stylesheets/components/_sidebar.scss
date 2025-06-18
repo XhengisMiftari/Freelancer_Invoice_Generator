@@ -74,16 +74,28 @@ body {
 }
 
 .nav > li > a {
+
   position: relative;
   display: block;
   width: 250px;
 }
 
+#sidebar .nav-item.dropdown.mt-auto {
+  padding: 1.25rem 0;
+}
+
+.navbar-brand {
+  display: block;
+  text-align: center;
+}
+
 .navbar-brand img {
-  width: 100px;
-  height: 100px;
+
+  width: 140px;
+  height: auto;
   object-fit: contain;
-  margin-bottom: 5px; // Space between logo and avatar
+  margin-bottom: 1rem;
+  margin-top: 1rem; // Space between logo and avatar
 }
 
 .dropdown-menu{
@@ -94,8 +106,8 @@ body {
   display: none;
 }
 
-
 .avatar, .avatar.rounded-circle {
+  margin: 1.5rem auto 28px auto;
   width: 64px;
   height: 64px;
   object-fit: cover;
@@ -103,3 +115,19 @@ body {
   display: block;
   margin: 0 auto 28px auto; // More space below avatar before menu
 }
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 16px 24px;
+}
+
+.nav-link i {
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.nav a i { margin-right: 0; }
