@@ -1,4 +1,4 @@
-<%= simple_form_for(invoice, html: { class: "form" }) do |f| %>
+<%= simple_form_for(invoice, html: { class: "form shadow" }) do |f| %>
   <%= f.input :tax, placeholder: "Taxes *", label: false %>
   <%= f.input :description, placeholder: "Description *", label: false %>
   <%= f.input :project_id, collection: current_user.projects, prompt: "Select Project" %>

@@ -1,4 +1,4 @@
-<%= simple_form_for(project, html: { class: "form", data: { controller: "project-form", turbo_frame: "new_project_form" } }) do |f| %>
+<%= simple_form_for(project, html: { class: "form shadow", data: { controller: "project-form", turbo_frame: "new_project_form" } }) do |f| %>
   <%= f.input :name, placeholder: "Name *", label: false %>
   <%= f.input :price, placeholder: "Price *", label: false %>
   <%= f.input :status, as: :select, collection: [["Completed", true], ["Ongoing", false]], prompt: "Select Status *" %>
