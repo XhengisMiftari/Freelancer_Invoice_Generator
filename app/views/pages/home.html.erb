@@ -32,7 +32,7 @@
     <% end %>
     <div class="card-body card shadow-sm flex-fill">
         <h5 class="card-title text-muted">Total Balance</h5>
-        <h1>500.000€</h1>
+        <h1><%= current_user.balance / 100  %>      €</h1>
     </div>
   </div>
   <turbo-frame id="dash_grid" class="mt-4">
