@@ -20,11 +20,11 @@
                   <li class="list-item-show"><strong>Client: </strong><%= project.client&.company_name %></li>
 
                   <% if project.project_date %>
-                    <li class="list-item-show"><strong>Start Date: </strong><%= project.project_date.start_date %></li>
-                    <li class="list-item-show"><strong>End Date: </strong><%= project.project_date.end_date %></li>
+                    <li class="list-item-show"><strong>Start Date: </strong><%= project.project_date.start_date.strftime("%B %-d %Y") %></li>
+                    <li class="list-item-show"><strong>End Date: </strong><%= project.project_date.end_date.strftime("%B %-d %Y") %></li>
                   <% end %>
 
-                  <li class="list-item-show"><strong>Price: </strong>$ <%= project.price %></li>
+                  <li class="list-item-show"><strong>Price: </strong>$ <%= project.price / 100 %></li>
 
                   <li class="list-item-show">
                     <strong>Status: </strong>

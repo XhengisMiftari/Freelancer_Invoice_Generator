@@ -120,6 +120,63 @@ def projects
   end
 end
 
+def balance
+  year  = params[:year]&.to_i || Time.current.year
+  month = params[:month]&.to_i || Time.current.month
+
+  # Ensure date range covers entire month — beginning and end of day included
+  start_date = Date.new(year, month, 1).beginning_of_day
+  end_date   = Date.new(year, month, -1).end_of_day
+
+  # Build full day list for x-axis
+  days_in_month = (start_date.to_date..end_date.to_date).to_a
+  daily_totals = days_in_month.index_with(0)
+
+  # Strict SQL: qualify the created_at column to avoid ambiguity
+  actual_data = current_user.invoices
+    .where(status: true)
+    .where("invoices.created_at >= ? AND invoices.created_at <= ?", start_date, end_date)
+    .group("DATE(invoices.created_at)") # this ensures grouping by calendar day only
+    .sum(:price_cents)
+
+  # Replace full date with day number (e.g. 1, 2, ..., 30)
+  actual_data_by_day = actual_data.transform_keys { |date| date.day }
+
+  # Merge only day-based values into full calendar
+  daily_totals_by_day = daily_totals.transform_keys(&:day)
+  daily_totals_by_day.merge!(actual_data_by_day)
+
+  @chart_labels = daily_totals_by_day.keys
+  @chart_values = daily_totals_by_day.values.map { |c| c.to_f / 10000 }
+
+  # For the chart header and navigation buttons
+  @current_month = Date::MONTHNAMES[month]
+  @current_year  = year
+  @prev_month = month == 1 ? 12 : month - 1
+  @prev_year  = month == 1 ? year - 1 : year
+  @next_month = month == 12 ? 1 : month + 1
+  @next_year  = month == 12 ? year + 1 : year
+
+  respond_to do |format|
+    format.html do
+      render partial: "shared/balanceGrid",
+             locals: {
+               chart_labels: @chart_labels,
+               chart_values: @chart_values,
+               current_month: @current_month,
+               current_year: @current_year,
+               prev_month: @prev_month,
+               prev_year: @prev_year,
+               next_month: @next_month,
+               next_year: @next_year
+             },
+             layout: "dash_frame"
+    end
+  end
+end
+
+
+
 end
 
 # For sanity reasons: This renders the initial dashboard with the 3 cards mentioned as empty with the "dash_grid" frame.
