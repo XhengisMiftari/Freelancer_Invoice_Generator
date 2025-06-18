@@ -6,7 +6,7 @@
                 class: "card shadow flex-fill text-decoration-none",         # the matching route and attr of "dash_grid"
                 style: "min-width: 200px; border-radius: 10px;" do %>
       <div class="card-body">
-        <h5 class="card-title text-muted">Total Invoices</h5>
+        <h5 class="card-title text-muted ">Total Invoices</h5>
         <h1><%= @invoices_count %></h1>
       </div>
     <% end %>
@@ -30,10 +30,15 @@
         <h1><%= @projects_count %></h1>
       </div>
     <% end %>
-    <div class="card-body card shadow-sm flex-fill">
-        <h5 class="card-title text-muted">Total Balance</h5>
-        <h1><%= current_user.balance / 100  %>      €</h1>
-    </div>
+    <%= link_to dashboard_balance_path,  # Add this line
+            data: { turbo_frame: "dash_grid", action: "dash#activate" },
+            class: "card shadow-sm flex-fill text-decoration-none",
+            style: "min-width: 200px; border-radius: 10px;" do %>
+  <div class="card-body">
+    <h5 class="card-title text-muted">Total Balance</h5>
+    <h1><%= current_user.balance / 100  %> €</h1>
+  </div>
+<% end %>
   </div>
   <turbo-frame id="dash_grid" class="mt-4">
     <%= render "shared/invoicesGrid", invoices: @invoices %>
