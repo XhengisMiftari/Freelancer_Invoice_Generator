@@ -11,3 +11,4 @@ pin "@kurkle/color", to: "@kurkle--color.js" # @0.3.4
 pin "chart.js" # @4.5.0
 pin "chartkick", to: "chartkick.js"
 pin "Chart.bundle", to: "Chart.bundle.js"
+pin "flatpickr", to: "https://ga.jspm.io/npm:flatpickr@4.6.13/dist/esm/index.js", preload: true
