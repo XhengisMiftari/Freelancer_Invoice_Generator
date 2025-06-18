@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "dashboard/clients",  to: "pages#clients",   as: :dashboard_clients   # links to the dashboard cards in home.html.erb
   get "dashboard/projects", to: "pages#projects",  as: :dashboard_projects  # links to the dashboard cards in home.html.erb
   # we arrive at dashboard after the GET from dash_controller.js -> activates the methods in pagesController ("to: "pages#invoices"") -> pages_controller.rb
+  get "dashboard/balance", to: "pages#balance", as: :dashboard_balance
   resources :projects do
     collection do
       get :list
