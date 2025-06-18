@@ -3,6 +3,7 @@ require 'googleauth'
 require 'mail'
 require 'base64'
 
+
 class GmailSender
   def self.send_gmail(user, to, subject, body, pdf_string)
     service = Google::Apis::GmailV1::GmailService.new

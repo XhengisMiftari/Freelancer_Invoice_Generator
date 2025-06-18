@@ -13,6 +13,8 @@
         <% end %>
         <%= f.input :avatar, as: :file, label: "Profile Image", input_html: { class: "form-control" } %>
         <%= f.input :email, required: true, autofocus: true, input_html: { class: "form-control" } %>
+        <%= f.input :first_name, required: true, input_html: { class: "form-control" } %>
+        <%= f.input :last_name, required: true, input_html: { class: "form-control" } %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
