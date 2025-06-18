@@ -1,18 +1,23 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
   <div class="card-show">
     <div class="border"></div>
-      <h2>Invoice Details</h2>
-        <%= link_to "Download PDF", invoice_path(@invoice, format: :pdf), class: "ibutton", target: "_blank" %>
-        <ul>
+      <h2 class="d-flex justify-content-center">Invoice Details</h2>
+        <%= link_to "Download PDF", invoice_path(@invoice, format: :pdf), class: "ibutton d-flex justify-content-center", target: "_blank" %>
+         <div class="d-flex flex-row align-items-start">
+            <div class="me-4 pt-2">
+          <i class="fas fa-file-invoice" style="color:rgba(87, 71, 133, 0.88); font-size:150px;"></i>
+            </div>
+        <ul class="mb-3 text-start flex-grow-1">
           <li class="list-group-item"><strong>Tax amount: </strong><%= @invoice.tax%> %</li>
           <li class="list-group-item"><strong>Description: </strong><%= @invoice.description%></li>
           <li class="list-group-item"><strong>Project Name: </strong><%= @invoice.project.name %></li>
           <li class="list-group-item"><strong>Client: </strong><%= @invoice.project.client&.company_name %></li>
-          <li class="list-group-item"><strong>Price: </strong><%= @invoice.project.price %></li>
-          <li class="list-group-item"><strong>Start Date: </strong><%=@invoice.project.project_date.start_date %></li>
-          <li class="list-group-item"><strong>End Date: </strong><%= @invoice.project.project_date.end_date %></li>
+          <li class="list-group-item"><strong>Price: </strong><%= @invoice.project.price / 100 %></li>
+          <li class="list-group-item"><strong>Start Date: </strong><%=@invoice.project.project_date.start_date.strftime("%B %-d %Y") %></li>
+          <li class="list-group-item"><strong>End Date: </strong><%= @invoice.project.project_date.end_date.strftime("%B %-d %Y") %></li>
         </ul>
-      <div data-controller="swal-confirm">
+        </div>
+      <div data-controller="swal-confirm" class="text-center mt-3">
         <%= link_to invoice_path(@invoice), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this invoice?", swal_text: "This cannot be reverted!"
         }, class: "button" do %>
         <i class="fa-solid fa-trash"></i>

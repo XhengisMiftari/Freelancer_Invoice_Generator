@@ -4,6 +4,7 @@
 @import "config/bootstrap_variables";
 
 // External libraries
+@import "flatpickr/dist/flatpickr.min.css";
 @import "font-awesome";
 @import "custom_bootstrap"; // This is STILL bootstrap, just slightly customized
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
@@ -13,8 +14,8 @@
 @import "pages/index";
 
 @import "components/calendar";
-
 @import "components/forms";
+
 
 .rounded-circle {
   border-radius: 50%;
@@ -29,7 +30,7 @@ a {
 // }
 
 body {
-  background-color:#e5eeeeea;
+  background-color:white;
 }
 
 .roboto {
@@ -89,4 +90,14 @@ body {
     box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
     cursor: not-allowed;
   }
+}
+
+.bg-warning {
+  background-color: rgba(189, 111, 43, 0.71) !important;
+  color: rgba(251, 249, 249, 0.97);
+}
+
+.bg-success {
+  background-color: rgba(65, 189, 134, 0.72) !important;
+  color: rgba(251, 249, 249, 0.97);
 }

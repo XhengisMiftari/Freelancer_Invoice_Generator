@@ -21,7 +21,11 @@
           </td>
           <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
           <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
-          <td><%= invoice.status ? "Paid" : "Unpaid" %></td>
+
+          <td>
+          <span class="badge <%= invoice.status ? 'bg-success' : 'bg-warning' %>">
+          <%= invoice.status ? "Paid" : "Unpaid" %>
+          </td>
           <td>
             <%= link_to invoice_path(invoice) do %>
               <%= image_tag("invoice.png", alt: "Invoice", width: 32, height: 32) %>
