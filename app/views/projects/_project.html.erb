@@ -21,7 +21,7 @@
     <% end %>
     <%= link_to project_path(project),
                             data: { controller: "swal-confirm", turbo_method: :delete, turbo_confirm: 'Are you sure?', swal_text: 'This cannot be reverted!', turbo_frame: "_top" },
-                            class: 'button' do %>
+                            class: 'delete' do %>
                   <i class="fa-solid fa-trash"></i>
     <% end %>
   </td>
