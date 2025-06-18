@@ -22,7 +22,9 @@
             </td>
             <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
             <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
-            <td><%= invoice.status ? "Paid" : "Unpaid" %></td>
+            <td> <span class="badge <%= invoice.status ? 'bg-success' : 'bg-warning' %>" style="width: 60px;">
+          <%= invoice.status ? "Paid" : "Unpaid" %></td>
+
             <td>
               <%= link_to invoice_path(invoice) do %>
                 <%= image_tag("invoice.png", alt: "Invoice", width: 32, height: 32) %>
@@ -43,13 +45,11 @@
   <div data-controller="invoice-performance"
       data-invoice-performance-current-year="<%= Time.current.year %>"
       data-invoice-performance-url="<%= invoices_path(format: :json) %>">
-
     <div class="mb-2 text-center">
       <button data-action="click->invoice-performance#previousYear" class="button">← Prev</button>
       <span id="year-label" class="ibutton"><%= Time.current.year %></span>
       <button data-action="click->invoice-performance#nextYear" class="button">Next →</button>
     </div>
-
     <canvas id="invoicePerformanceChart" width="400" height="200"></canvas>
   </div>
 </div>
