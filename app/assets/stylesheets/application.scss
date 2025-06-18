@@ -6,7 +6,7 @@
 // External libraries
 @import "font-awesome";
 @import "custom_bootstrap"; // This is STILL bootstrap, just slightly customized
-
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 // Your CSS partials
 
 @import "components/index";
@@ -32,6 +32,23 @@ body {
   background-color:#e5eeeeea;
 }
 
+.roboto {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+  h1, h2, p, h3, h5 {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    color: #333446
+  }
 .login-with-google-btn {
   transition: background-color .3s, box-shadow .3s;
 
