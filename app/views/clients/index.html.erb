@@ -1,17 +1,16 @@
-<div style="display: flex;">
-  <div style="flex: 2; margin-right: 2rem;">
-    <h2>Clients</h2>
-
-    <turbo-frame id="clients_list_frame" src="<%= list_clients_path %>">
-      <%= render partial: "clients/table", locals: { clients: @clients } %>
-    </turbo-frame>
-  </div>
-
-  <div style="flex: 1;">
-    <h2>New Client</h2>
-
-    <turbo-frame id="new_client_form" data-controller="swal-confirm">
-      <%= render "shared/clientForm", client: Client.new %>
-    </turbo-frame>
+<div class="container py-4">
+  <div class="row">
+    <div class="col-lg-8 mb-4">
+      <h2>Clients</h2>
+      <turbo-frame id="clients_list_frame" src="<%= list_clients_path %>">
+        <%= render partial: "clients/table", locals: { clients: @clients } %>
+      </turbo-frame>
+    </div>
+    <div class="col-lg-4">
+      <h2>New Client</h2>
+      <turbo-frame id="new_client_form" data-controller="swal-confirm">
+        <%= render "shared/clientForm", client: Client.new %>
+      </turbo-frame>
+    </div>
   </div>
 </div>

@@ -1,14 +1,16 @@
-<div style="display: flex;">
-  <div style="flex: 2; margin-right: 2rem;">
-    <h2>Projects</h2>
-    <turbo-frame id="projects_list_frame" src="<%= list_projects_path %>">
-      <%= render partial: "projects/table", locals: { projects: @projects } %>
-    </turbo-frame>
-  </div>
-  <div style="flex: 1;">
-    <h2>New Project</h2>
-    <turbo-frame id="new_project_form" data-controller="swal-confirm">
-      <%= render "shared/projectsForm", project: Project.new %>
-    </turbo-frame>
+<div class="container py-4">
+  <div class="row">
+    <div class="col-lg-8 mb-4">
+      <h2>Projects</h2>
+      <turbo-frame id="projects_list_frame" src="<%= list_projects_path %>">
+        <%= render partial: "projects/table", locals: { projects: @projects } %>
+      </turbo-frame>
+    </div>
+    <div class="col-lg-4">
+      <h2>New Project</h2>
+      <turbo-frame id="new_project_form" data-controller="swal-confirm">
+        <%= render "shared/projectsForm", project: Project.new %>
+      </turbo-frame>
+    </div>
   </div>
 </div>
