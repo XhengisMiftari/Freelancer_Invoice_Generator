@@ -26,7 +26,7 @@
     <% projects.each do |project| %>
       <tr>
         <td><%= project.name %></td>
-        <td><%= project.client.first_name %><%= project.client.last_name %></td>
+        <td><%= project.client.first_name %> <%= project.client.last_name %></td>
         <td><%= project.project_date&.start_date&.strftime("%Y-%m-%d") %></td>
         <td><%= project.project_date&.end_date&.strftime("%Y-%m-%d") %></td>
         <td><%= project.status ? "Active" : "Inactive" %></td>
