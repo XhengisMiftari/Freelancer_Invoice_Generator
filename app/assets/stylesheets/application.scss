@@ -4,6 +4,7 @@
 @import "config/bootstrap_variables";
 
 // External libraries
+@import "flatpickr/dist/flatpickr.min.css";
 @import "font-awesome";
 @import "custom_bootstrap"; // This is STILL bootstrap, just slightly customized
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
@@ -13,8 +14,8 @@
 @import "pages/index";
 
 @import "components/calendar";
-
 @import "components/forms";
+
 
 .rounded-circle {
   border-radius: 50%;
