@@ -115,6 +115,7 @@ end
       "Here is your invoice for project #{@invoice.project.name}.<br>Pay online: <a href='#{stripe_url}'>Pay with Stripe</a>",
       invoice_html
     )
+
     flash[:notice] = "Invoice created and sent!"
     redirect_to invoice_path(@invoice)
   else
