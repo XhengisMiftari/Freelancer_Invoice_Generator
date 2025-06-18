@@ -19,7 +19,7 @@
               <% if project_date.project&.price.present? %>
                 <span class="text-success"><%= number_to_currency(project_date.project.price) %></span><br>
               <% end %>
-              <%= project_date.start_date.strftime("%Y-%m-%d") %> to <%= project_date.end_date.strftime("%Y-%m-%d") %>
+              <%= project_date.start_date.strftime("%B %-d") %> to <%= project_date.end_date.strftime("%B %-d") %>
             </div>
           <% end %>
         <% end %>
@@ -33,8 +33,8 @@
           <% if project_date.project&.price.present? %>
             <span class="text-success"><%= number_to_currency(project_date.project.price) %></span>:
           <% end %>
-          <%= project_date.start_date.strftime("%Y-%m-%d") %> to
-          <%= project_date.end_date.strftime("%Y-%m-%d") %>
+          <%= project_date.start_date.strftime("%B %-d %Y") %> to
+          <%= project_date.end_date.strftime("%B %-d %Y") %>
         </li>
       <% end %>
     </ul>
