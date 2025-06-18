@@ -20,7 +20,7 @@
       <th>Invoice</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="shadow">
   <% @invoices.each do |invoice| %>
     <tr>
       <td> <%= link_to project_path(invoice.project), data: { turbo_frame: "_top" } do %>
