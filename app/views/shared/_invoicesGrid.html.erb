@@ -10,7 +10,7 @@
   </div>
 </div>
 <h2>Invoices</h2>
-<table class="table table-striped">
+<table class="table table-striped shadow">
   <thead>
     <tr>
       <th>Full Name</th>
@@ -20,10 +20,10 @@
       <th>Invoice</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="shadow">
   <% @invoices.each do |invoice| %>
     <tr>
-      <td> <%= link_to project_path(invoice.project), data: { turbo_frame: "_top" } do %>
+      <td> <%= link_to project_path(invoice.project), data: { turbo_frame: "_top" },class: "button" do %>
         <%= invoice.project.name %>
         <% end %>
       </td>
