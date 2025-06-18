@@ -12,9 +12,9 @@
           <li class="list-group-item"><strong>Description: </strong><%= @invoice.description%></li>
           <li class="list-group-item"><strong>Project Name: </strong><%= @invoice.project.name %></li>
           <li class="list-group-item"><strong>Client: </strong><%= @invoice.project.client&.company_name %></li>
-          <li class="list-group-item"><strong>Price: </strong><%= @invoice.project.price %></li>
-          <li class="list-group-item"><strong>Start Date: </strong><%=@invoice.project.project_date.start_date %></li>
-          <li class="list-group-item"><strong>End Date: </strong><%= @invoice.project.project_date.end_date %></li>
+          <li class="list-group-item"><strong>Price: </strong><%= @invoice.project.price / 100 %></li>
+          <li class="list-group-item"><strong>Start Date: </strong><%=@invoice.project.project_date.start_date.strftime("%B %-d %Y") %></li>
+          <li class="list-group-item"><strong>End Date: </strong><%= @invoice.project.project_date.end_date.strftime("%B %-d %Y") %></li>
         </ul>
         </div>
       <div data-controller="swal-confirm" class="text-center mt-3">
