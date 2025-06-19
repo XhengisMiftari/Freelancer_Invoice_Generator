@@ -1,4 +1,4 @@
-<%= simple_form_for(client, html: { class: "form", data: { controller: "client-form", turbo_frame: "new_client_form" } }) do |f| %>
+<%= simple_form_for(client, html: { class: "form shadow", data: { controller: "client-form", turbo_frame: "new_client_form" } }) do |f| %>
 <%= f.input :first_name, placeholder: "First name *", label: false %>
   <%= f.input :last_name, placeholder: "Last name *", label: false %>
   <%= f.input :date_of_birth,
