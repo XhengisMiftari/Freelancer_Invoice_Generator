@@ -6,7 +6,7 @@
   </td>
   <td><%= "#{client.first_name} #{client.last_name}" %></td>
   <td><%= client.email %></td>
-  <td>
+  <td class="text-nowrap">
     <%= link_to client_path(client), data: { turbo_frame: "_top" },
           class: "show" do %>
           <i class="fa-solid fa-eye"></i>
