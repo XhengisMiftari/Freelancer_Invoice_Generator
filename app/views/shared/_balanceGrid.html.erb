@@ -1,9 +1,9 @@
-<div class="d-flex justify-content-between align-items-center mb-3">
+<div class="d-flex gap-1 my-2">
   <%= link_to "←", dashboard_balance_path(month: prev_month, year: prev_year), data: { turbo_frame: "dash_grid" }, class: "button" %>
-  <h5 class="mb-0"><%= "#{current_month} #{current_year}" %></h5>
+  <h5 class="mb-0 ibutton"><%= "#{current_month} #{current_year}" %></h5>
   <%= link_to "→", dashboard_balance_path(month: next_month, year: next_year), data: { turbo_frame: "dash_grid" }, class: "button" %>
 </div>
-
+<h2>Balance</h2>
 <canvas id="balance-chart"></canvas>
 
 <script type="text/javascript">

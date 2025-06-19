@@ -3,7 +3,7 @@
     <% @clients.each do |client| %>
       <div class="carousel-item <%= 'active' if client == @client %>">
         <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-          <div class="card-show">
+          <div class="card-show shadow">
             <div class="border"></div>
 
             <!-- Header -->
@@ -13,10 +13,7 @@
               <!-- Image + basic info -->
               <div class="d-flex flex-row align-items-start">
                 <div class="me-4">
-                  <%= image_tag "clientshow.png",
-                                alt: "Client Image",
-                                class: "img-fluid rounded",
-                                style: "width: 180px; height: 240px; object-fit: cover;" %>
+                  <%= image_tag "clientshow.png", alt: "Client Image", class: "img-fluid rounded", style: "width: 180px; height: 240px; object-fit: cover;" %>
                 </div>
 
                 <ul class="list-group list-group-flush mb-3 text-start flex-grow-1">

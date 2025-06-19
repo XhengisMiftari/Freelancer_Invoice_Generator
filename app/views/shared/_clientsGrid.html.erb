@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody class="shadow">
-    <% clients.each do |client| %>
+    <% clients.first(5).each do |client| %>
       <tr>
         <td><%= client.first_name %> <%= client.last_name %></td>
         <td><%= client.email %></td>
