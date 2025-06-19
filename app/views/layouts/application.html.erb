@@ -5,6 +5,13 @@
     <%= favicon_link_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="invoice generator application for freelancers">
+    <meta property="og:title" content="Freelancer Invoice Generator">
+    <meta property="og:description" content="Create Invoices and keep your projects organized">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= root_url %>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image" content="<%= image_url('og_image.jpg') %>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
