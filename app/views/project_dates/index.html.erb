@@ -1,13 +1,14 @@
-<% if params[:view] == "year" %>
-  <%= link_to "Show Month Calendar", project_dates_path, class: "button" %>
-<% else %>
-  <%= link_to "Show Year Calendar", project_dates_path(view: "year"), class: "button" %>
-<% end %>
-
 <div class="container py-4">
   <div class="row">
     <div class="col-lg-8 mb-4">
       <h2>Project Dates</h2>
+      <div class="d-flex align-items-center justify-content-center">
+        <% if params[:view] == "year" %>
+        <%= link_to "Show Month Calendar", project_dates_path, class: "button" %>
+        <% else %>
+          <%= link_to "Show Year Calendar", project_dates_path(view: "year"), class: "button" %>
+        <% end %>
+      </div>
       <div class="calendar-container">
         <% if params[:view] == "year" %>
           <%= render "year_calendar", project_dates: @project_dates %>
@@ -24,19 +25,6 @@
           <% end %>
         <% end %>
       </div>
-
-      <ul>
-        <% @project_dates.each do |project_date| %>
-          <li>
-            <%= link_to project_date.project&.name, project_date_path(project_date) %>:
-            <% if project_date.project&.price.present? %>
-              <span class="text-success"><%= number_to_currency(project_date.project.price) %></span>:
-            <% end %>
-            <%= project_date.start_date.strftime("%B %-d %Y") %> to
-            <%= project_date.end_date.strftime("%B %-d %Y") %>
-          </li>
-        <% end %>
-      </ul>
     </div>
     <div class="col-lg-4" data-controller="swal-confirm">
       <h2>New Project Date</h2>

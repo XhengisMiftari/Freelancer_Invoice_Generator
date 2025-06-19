@@ -1,0 +1,32 @@
+.table-link {
+  background-color: transparent;
+  color: #5FA8A4;
+  border: 1px solid #5FA8A4;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 4px 12px;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(95, 168, 164, 0.15);
+    color: #5FA8A4;
+  }
+
+  &:active {
+    background-color: rgba(95, 168, 164, 0.30);
+  }
+
+  &.disabled,
+  &[aria-disabled='true'] {
+    color: #A0B8B7;
+    border-color: #A0B8B7;
+    cursor: default;
+    pointer-events: none;
+  }
+}

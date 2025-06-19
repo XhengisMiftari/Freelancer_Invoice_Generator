@@ -1,4 +1,4 @@
-<%= simple_form_for(project_date, html: { class: "form" }) do |f| %>
+<%= simple_form_for(project_date, html: { class: "form shadow" }) do |f| %>
   <%= f.input :start_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
   <%= f.input :end_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
   <%= f.input :project_id, collection: current_user.projects, prompt: "Select Project" %>

@@ -1,4 +1,4 @@
-<div class=" justify-content-center shadow">
+<div class=" justify-content-center">
   <div class="col-sm-8 my-3">
   <%= form_with url: root_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
@@ -23,7 +23,7 @@
   </thead>
 
   <tbody>
-    <% projects.each do |project| %>
+    <% projects.first(5).each do |project| %>
       <tr>
         <td><%= project.name %></td>
         <td><%= project.client.first_name %><%= project.client.last_name %></td>
