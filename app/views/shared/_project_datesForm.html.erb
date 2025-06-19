@@ -1,6 +1,6 @@
 <%= simple_form_for(project_date, html: { class: "form shadow" }) do |f| %>
-  <%= f.input :start_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
-  <%= f.input :end_date, as: :string, input_html: { data: { controller: "flatpickr" } } %>
+  <%= f.input :start_date, placeholder: "Start date *", as: :string, input_html: { data: { controller: "flatpickr" } }, label: false %>
+  <%= f.input :end_date, placeholder: "End date *", as: :string, input_html: { data: { controller: "flatpickr" } }, label: false %>
   <%= f.input :project_id, collection: current_user.projects, prompt: "Select Project" %>
   <%= f.button :submit, data: { turbo_confirm: "Create these project dates??" }, class: "ibutton" %>
 <% end %>
