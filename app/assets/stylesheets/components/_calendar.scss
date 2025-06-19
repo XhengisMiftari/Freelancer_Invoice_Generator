@@ -7,6 +7,23 @@
   }
 }
 
+.calendar-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.calendar-container table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.calendar-container th,
+.calendar-container td {
+  width: 14.2857%;
+  overflow: hidden;
+  white-space: normal;
+  word-wrap: break-word;
+}
 
 // Bright color variations for events
 .calendar-event.color-0 { background: #ffe066; color: #222; border-left: 5px solid #ffd700; }
