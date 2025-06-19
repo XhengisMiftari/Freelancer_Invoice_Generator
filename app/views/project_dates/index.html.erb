@@ -17,9 +17,7 @@
             <% project_dates.each_with_index do |project_date, idx| %>
               <div class="calendar-event color-<%= idx % 5 %>">
                 <%= link_to project_date.project&.name, project_date_path(project_date) %><br>
-                <% if project_date.project&.price.present? %>
-                  <span class="text-success"><%= number_to_currency(project_date.project.price) %></span><br>
-                <% end %>
+
                 <%= project_date.start_date.strftime("%B %-d") %> to <%= project_date.end_date.strftime("%B %-d") %>
               </div>
             <% end %>
@@ -46,3 +44,8 @@
     </div>
   </div>
 </div>
+
+
+<%# <% if project_date.project&.price.present? %>
+                  <%# <span class="text-success"><%= number_to_currency(project_date.project.price) %></span><br> %>
+                <%# <% end %>
