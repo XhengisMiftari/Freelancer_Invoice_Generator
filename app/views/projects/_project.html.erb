@@ -11,7 +11,7 @@
   </td>
   <td><%= project.client.first_name %> <%= project.client.last_name %></td>
   <td><%= project.client&.company_name %></td>
-  <td>
+  <td class="text-nowrap">
     <%= link_to project_path(project), data: { turbo_frame: "_top" }, class: "show" do  %>
     <i class="fa-solid fa-eye"></i>
     <% end %>

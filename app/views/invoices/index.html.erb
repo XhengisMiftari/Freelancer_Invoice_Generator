@@ -20,8 +20,9 @@
                 <%= invoice.project.name %>
               <% end %>
             </td>
-            <td><%= invoice.project.project_date.start_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
-            <td><%= invoice.project.project_date.end_date.strftime("%Y-%m-%d") if invoice.project.project_date %></td>
+
+            <td><%= invoice.project.project_date&.start_date&.strftime("%B %-d %Y") %></td>
+            <td><%= invoice.project.project_date&.end_date&.strftime("%B %-d %Y") %></td>
             <td> <span class="badge <%= invoice.status ? 'bg-success' : 'bg-warning' %>" style="width: 60px;">
           <%= invoice.status ? "Paid" : "Unpaid" %></td>
 
